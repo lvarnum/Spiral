@@ -3,7 +3,7 @@ const router = require("express").Router();
 const postRoutes = require("./postsController");
 const userRoutes = require("./usersController");
 const universityRoutes = require("./universitiesController");
-const classRoutes = require("./classesController");
+const courseRoutes = require("./coursesController");
 const assignmentRoutes = require("./assignmentsController");
 
 
@@ -11,7 +11,7 @@ const assignmentRoutes = require("./assignmentsController");
 router.use("/posts", postRoutes);
 router.use("/users", userRoutes);
 router.use("/universities", universityRoutes);
-router.use("/classes", classRoutes);
+router.use("/courses", courseRoutes);
 router.use("/assignments", assignmentRoutes);
 
 

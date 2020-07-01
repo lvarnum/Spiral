@@ -24,7 +24,6 @@ function SignupForm(props) {
                                     as="input"
                                     type="email"
                                     placeholder="Enter your Email"
-                                    helperText="This will be public!"
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -36,7 +35,6 @@ function SignupForm(props) {
                                     as="input"
                                     type="password"
                                     placeholder="Enter your password"
-                                    helperText="This will be your password (we won't share it with anyone!)"
                                 />
                             </Grid>
                             <Grid item xs={12}>
