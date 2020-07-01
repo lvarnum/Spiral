@@ -3,7 +3,7 @@ const bcrypt = require("bcryptjs");
 
 const Schema = mongoose.Schema;
 
-const classSchema = new Schema(
+const courseSchema = new Schema(
     {
         prefix: {
             type: String,
@@ -20,6 +20,6 @@ const classSchema = new Schema(
     }
 );
 
-const Class = mongoose.model("Class", classSchema);
+const Course = mongoose.model("Course", courseSchema);
 
-module.exports = Class;
+module.exports = Course;
