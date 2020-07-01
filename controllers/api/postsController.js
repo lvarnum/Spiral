@@ -42,7 +42,7 @@ router.post("/", isAuthenticated,  function (req, res) {
  * Post - Update
  */
 router.put("/:id", isAuthenticated, function (req, res) {
-  db.Post.findByIdAndUpdate(params.id, req.body)
+  db.Post.findByIdAndUpdate(req.params.id, req.body)
     .then(dbModel => res.json(dbModel))
     .catch(err => res.status(422).json(err));
 });
