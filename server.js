@@ -14,7 +14,7 @@ const routes = require("./controllers");
 // Setting up port 
 const PORT = process.env.PORT || 3001;
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/project3", {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/spiraldb", {
   useNewUrlParser: true,
   useFindAndModify: false
 });

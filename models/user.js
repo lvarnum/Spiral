@@ -22,6 +22,19 @@ const userSchema = new Schema(
         },
         posts: [
             { type: Schema.Types.ObjectId, ref: 'Post' }
+        ],
+        session: {
+            type: String
+        },
+        university: {
+            type: Schema.Types.ObjectId,
+            ref: 'University'
+        },
+        classes: [
+            { type: Schema.Types.ObjectId, ref: 'Class' }
+        ],
+        assignments: [
+            { type: Schema.Types.ObjectId, ref: 'Assignment' }
         ]
     }
 );
