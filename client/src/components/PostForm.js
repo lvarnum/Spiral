@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Grid, Paper, Container, TextField, Typography } from '@material-ui/core';
+import { Button, Grid, Paper, Container, TextField, Typography, FormControl, FormLabel, RadioGroup, FormControlLabel, Radio } from '@material-ui/core';
 
 function PostForm(props) {
     const { formObject, handleFormSubmit, handleInputChange } = props;
@@ -15,22 +15,30 @@ function PostForm(props) {
                                     New Post
                                 </Typography>
                             </Grid>
+                            <FormControl component="fieldset">
+                                <FormLabel component="legend">Post Type</FormLabel>
+                                <RadioGroup defaultValue="Study Group/Academic Inquiries" aria-label="postType" name="customized-radios">
+                                    <FormControlLabel value="Study Group/Academic Inquiries" control={<Radio />} label="Study Group/Academic Inquiries" />
+                                    <FormControlLabel value="Club Info/Updates" control={<Radio />} label="Club Info/Updates" />
+                                    <FormControlLabel value="Events/Extra Curricular" control={<Radio />} label="Events/Extra Curricular" />
+                                </RadioGroup>
+                            </FormControl>
                             <Grid item xs={12}>
                                 <TextField
-                                    label="Title"
+                                    label="Post Title"
                                     value={formObject.title}
-                                    name="title"
+                                    name="post title"
                                     onChange={handleInputChange}
                                     helperText="Enter the Title of your Post"
                                 />
                             </Grid>
                             <Grid item xs={12}>
                                 <TextField
-                                    label="Body"
+                                    label="Description"
                                     value={formObject.body}
-                                    name="body"
+                                    name="description"
                                     onChange={handleInputChange}
-                                    helperText="Enter the Body of your Post"
+                                    helperText="Enter the Description of your Post"
                                 />
                             </Grid>
                             <Grid item xs={12}>

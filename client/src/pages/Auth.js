@@ -6,7 +6,7 @@ import LoginForm from "../components/LoginForm";
 
 function Auth(props) {
     const { user, loginUser, signupUser } = props;
-    const initialFormState = { email: "", password: "" };
+    const initialFormState = { email: "", password: "", firstName: "", lastName: "", session: "", university: "" };
     const [formObject, setFormObject] = useState(initialFormState)
 
     const location = useLocation();
