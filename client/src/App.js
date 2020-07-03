@@ -5,7 +5,8 @@ import {
   Route,
   Redirect
 } from "react-router-dom";
-import { Home, Requirements, Forum } from "./pages";
+import { Home, Requirements, Forum} from "./pages";
+import BigCalendar from './pages/Calendar'
 import Auth from "./pages/Auth"
 import { Navigation, Error } from "./components";
 import Container from '@material-ui/core/Container';
@@ -64,6 +65,9 @@ function App() {
               <Switch>
                 <Route exact path={["/", "/home"]}>
                   <Home />
+                </Route>
+                <Route exact path={["/calendar"]}>
+                  <BigCalendar />
                 </Route>
                 <Route exact path={["/requirements"]}>
                   <Requirements />
