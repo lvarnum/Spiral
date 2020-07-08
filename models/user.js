@@ -5,6 +5,12 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema(
     {
+        firstName: {
+            type: String
+        },
+        lastName: {
+            type: String
+        },
         createdAt: {
             type: Date,
             default: () => new Date()
@@ -30,8 +36,8 @@ const userSchema = new Schema(
             type: Schema.Types.ObjectId,
             ref: 'University'
         },
-        classes: [
-            { type: Schema.Types.ObjectId, ref: 'Class' }
+        scheduleItems: [
+            { type: Schema.Types.ObjectId, ref: 'scheduleItems' }
         ],
         assignments: [
             { type: Schema.Types.ObjectId, ref: 'Assignment' }

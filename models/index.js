@@ -4,4 +4,5 @@ module.exports = {
   University: require('./university'),
   Course: require('./course'),
   Assignment: require('./assignment'),
+  ScheduleItem: require('./scheduleitem')
 };

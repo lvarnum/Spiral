@@ -5,8 +5,8 @@ const router = require("express").Router();
  * University - Read All
  */
 router.get("/", function (req, res) {
-    db.University.find({}).sort([['name', 1]])
-        .populate("classes")
+    db.University.find({}).sort([['state', 1]])
+        .populate("courses")
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
 });
@@ -16,7 +16,7 @@ router.get("/", function (req, res) {
  */
 router.get("/:id", function (req, res) {
     db.University.findById(req.params.id)
-        .populate("classes")
+        .populate("courses")
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
 });
