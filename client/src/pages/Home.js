@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Paper, Typography, Grid } from "@material-ui/core";
+import { Container, Paper, Typography, Grid, Button } from "@material-ui/core";
 
 function Home() {
 
@@ -10,11 +10,23 @@ function Home() {
                     <Grid container spacing={3}>
                         <Grid item xs={12}>
                             <Typography variant="h2" align="center" gutterBottom>
-                                Hello World
+                                Spiral
+                            </Typography>
+                            <Typography variant="h4" align="center" gutterBottom>
+                                Student class organizer, assignment planner, and university community forum application.
                             </Typography>
                         </Grid>
-                    </Grid>         
-            </Container>
+                    </Grid>
+
+                    <Button variant="contained" color="primary" type="submit">
+                        Login
+                    </Button>
+
+                    <Button variant="contained" color="primary" type="submit">
+                        Signup
+                    </Button>
+
+                </Container>
             </Paper>
         </>
     )
