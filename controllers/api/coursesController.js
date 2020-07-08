@@ -7,6 +7,7 @@ const isAuthenticated = require("../../config/middleware/isAuthenticated");
  */
 router.get("/", isAuthenticated, function (req, res) {
     db.Course.find({}).sort([['prefix', 1]])
+        .populate("university")
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
 });
@@ -16,6 +17,7 @@ router.get("/", isAuthenticated, function (req, res) {
  */
 router.get("/:id", isAuthenticated, function (req, res) {
     db.Course.findById(req.params.id)
+        .populate("university")
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
 });

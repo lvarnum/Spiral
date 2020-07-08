@@ -56,5 +56,4 @@ router.delete("/:id", isAuthenticated, function (req, res) {
     .catch(err => res.status(422).json(err));
 });
 
-// Defining methods for the booksController
 module.exports = router;

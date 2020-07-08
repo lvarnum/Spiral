@@ -28,10 +28,14 @@ function App() {
     })
   }
 
-  function signupUser(email, password) {
+  function signupUser(email, password, firstName, lastName, session, university) {
     const data = {
       email: email,
-      password: password
+      password: password,
+      firstName: firstName,
+      lastName: lastName, 
+      session: session,
+      university: university
     }
     API.Auth.signup(data).then(res => {
       setUser(res.data)
@@ -66,9 +70,9 @@ function App() {
                 <Route exact path={["/", "/home"]}>
                   <Home />
                 </Route>
-                <Route exact path={["/calendar"]}>
-                  <BigCalendar />
-                </Route>
+                <PrivateRoute exact user={user} path={["/calendar"]}>
+                  <BigCalendar user={user} />
+                </PrivateRoute>
                 <Route exact path={["/requirements"]}>
                   <Requirements />
                 </Route>

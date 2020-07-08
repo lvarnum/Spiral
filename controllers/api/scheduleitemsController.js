@@ -7,7 +7,7 @@ const isAuthenticated = require("../../config/middleware/isAuthenticated");
  */
 router.get("/", isAuthenticated, function (req, res) {
   db.scheduleItem.find({}).sort([['startTime', 1]])
-    .populate("assignment")
+    .populate("assignments")
     .then(dbModel => res.json(dbModel))
     .catch(err => res.status(422).json(err));
 });
@@ -17,7 +17,7 @@ router.get("/", isAuthenticated, function (req, res) {
  */
 router.get("/:id", isAuthenticated, function (req, res) {
   db.scheduleItem.findById(req.params.id)
-    .populate("assignment")
+    .populate("assignments")
     .then(dbModel => res.json(dbModel))
     .catch(err => res.status(422).json(err));
 });
