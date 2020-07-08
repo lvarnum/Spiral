@@ -18,43 +18,39 @@ function AddAssignmentForm(props) {
                             <Grid item xs={12}>
                                 <TextField
                                     label="Assignment Name"
-                                    value={formObject.assignmentName}
-                                    name="Assignment Name"
+                                    value={formObject.name}
+                                    name="name"
                                     onChange={handleInputChange}
                                     as="input"
-                                    type="Assignment Name"
-                                    placeholder="Enter your Assignment Name"
+                                    type="text"
                                 />
                             </Grid>
                             <Grid item xs={12}>
                                 <TextField
                                     label="Assignment Notes"
-                                    value={formObject.assignmentNotes}
-                                    name="Last Name"
+                                    value={formObject.notes}
+                                    name="notes"
                                     onChange={handleInputChange}
                                     as="input"
-                                    type="Assignment Notes"
-                                    placeholder="Assignment Notes/Description"
+                                    type="text"
                                 />
                             </Grid>
                             <Grid item xs={12}>
                                 <TextField
+                                    id="date"
                                     label="Due Date"
-                                    value={formObject.dueDate}
-                                    name="Due Date"
+                                    name="due"
+                                    value={formObject.due}
+                                    type="date"
                                     onChange={handleInputChange}
-                                    type="Date"
-                                    defaultValue="2017-05-24"
-                                    // className={classes.textField}
                                     InputLabelProps={{
                                         shrink: true,
                                     }}
-                                    placeholder="Enter Due Date"
                                 />
-                                <Button variant="contained" color="primary" type="submit" onClick={handleFormSubmit}>
-                                    Add Assignment
-                                </Button>
                             </Grid>
+                            <Button variant="contained" color="primary" type="submit" onClick={handleFormSubmit}>
+                                Add Assignment
+                                </Button>
                         </Grid>
                     </form>
                 </Container>
