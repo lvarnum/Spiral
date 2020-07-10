@@ -10,7 +10,7 @@ const courseSchema = new Schema(
             // Unique ?
         },
         numbers: [
-            { type: Number }
+            { type: String}
         ],
         university: {
             type: Schema.Types.ObjectId,

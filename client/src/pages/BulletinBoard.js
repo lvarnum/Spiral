@@ -4,7 +4,7 @@ import API from "../utils/API";
 import { PostTable, PostForm } from "../components";
 
 function Forum(props) {
-    const initialFormState = { title: "", body: "" };
+    const initialFormState = { title: "", body: "", type: "" };
     const [posts, setPosts] = useState([]);
     const [formObject, setFormObject] = useState(initialFormState)
 
@@ -22,6 +22,7 @@ function Forum(props) {
     const handleInputChange = (event) => {
         event.preventDefault();
         const { name, value } = event.target;
+        console.log(event.target);
         setFormObject({ ...formObject, [name]: value });
     }
 
@@ -29,12 +30,17 @@ function Forum(props) {
         event.preventDefault();
         const data = {
             title: formObject.title,
-            body: formObject.body
+            body: formObject.body,
+            type: formObject.type
         }
         API.Post.create(data).then(res => {
-            setFormObject(initialFormState);
-            loadPosts();
-        })
+            API.User.update({
+                $push: { posts: res.data._id }
+            }).then(res => {
+                setFormObject(initialFormState);
+                loadPosts();
+            })
+        });
     }
 
     return (
