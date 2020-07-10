@@ -38,6 +38,7 @@ router.post("/", function (req, res) {
  * User - Update
  */
 router.put("/:id", isAuthenticated, function (req, res) {
+  console.log(req.body);
   db.User.findByIdAndUpdate(req.params.id, req.body)
     .then(dbModel => res.json(dbModel))
     .catch(err => res.status(422).json(err));

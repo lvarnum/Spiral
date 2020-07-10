@@ -1,7 +1,7 @@
 import React from "react";
 
 
-function AddPost() {
+function AddPost(props) {
 
     
 }

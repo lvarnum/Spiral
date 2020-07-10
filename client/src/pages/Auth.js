@@ -1,14 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation, Redirect } from "react-router-dom";
 import SignupForm from "../components/SignupForm";
 import LoginForm from "../components/LoginForm";
+import API from "../utils/API";
 
 function Auth(props) {
     const { user, loginUser, signupUser } = props;
-    const initialFormState = { email: "", password: "", firstName: "", lastName: "", session: "", university: ""};
-    const [formObject, setFormObject] = useState(initialFormState)
+    const initialFormState = { email: "", password: "", firstName: "", lastName: "", session: "", university: "" };
+    const [formObject, setFormObject] = useState(initialFormState);
+    const [universityState, setUniversities] = useState({
+        universities: []
+    });
 
     const location = useLocation();
+
+    useEffect(() => {
+        API.University.getAll()
+            .then(res => {
+                setUniversities({ universities: res.data });
+            })
+            .catch(err => console.log(err));
+    }, []);
 
     const handleInputChange = (event) => {
         event.preventDefault();
@@ -18,14 +30,14 @@ function Auth(props) {
 
     const handleLoginSubmit = (event) => {
         event.preventDefault();
-        const { email, password} = formObject;
+        const { email, password } = formObject;
         loginUser(email, password);
         setFormObject(initialFormState);
     }
 
     const handleSignupSubmit = (event) => {
         event.preventDefault();
-        const { email, password, firstName, lastName, session, university  } = formObject;
+        const { email, password, firstName, lastName, session, university } = formObject;
         signupUser(email, password, firstName, lastName, session, university);
         setFormObject(initialFormState);
     }
@@ -48,7 +60,9 @@ function Auth(props) {
                         <SignupForm
                             formObject={formObject}
                             handleInputChange={handleInputChange}
-                            handleFormSubmit={handleSignupSubmit} />
+                            handleFormSubmit={handleSignupSubmit}
+                            universityState={universityState}
+                            />
                     </>
             }
         </>
