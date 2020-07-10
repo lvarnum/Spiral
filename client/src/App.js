@@ -5,7 +5,7 @@ import {
   Route,
   Redirect
 } from "react-router-dom";
-import { Home, Schedule, BulletinBoard, AddAssignment, BigCalendar, AddClass } from "./pages";
+import { Home, Schedule, BulletinBoard, BigCalendar, Assignments } from "./pages";
 import Auth from "./pages/Auth"
 import { Navigation, Error } from "./components";
 import Container from '@material-ui/core/Container';
@@ -88,17 +88,14 @@ function App() {
                   <PrivateRoute exact user={user} path={["/calendar"]}>
                     <BigCalendar user={user} />
                   </PrivateRoute>
-                  <Route exact path={["/schedule"]}>
-                    <Schedule />
-                  </Route>
-                  <PrivateRoute exact user={user} path={["/addassignment"]}>
-                    <AddAssignment user={user} />
-                  </PrivateRoute>
-                  <PrivateRoute exact user={user} path={["/addclass"]}>
-                    <AddClass user={user} />
+                  <PrivateRoute exact user={user} path={["/schedule"]}>
+                    <Schedule user={user} />
                   </PrivateRoute>
                   <PrivateRoute exact user={user} path={["/bulletinboard"]}>
                     <BulletinBoard user={user} />
+                  </PrivateRoute>
+                  <PrivateRoute exact user={user} path={["/assignments"]}>
+                    <Assignments user={user} />
                   </PrivateRoute>
                   <Route exact path={["/login", "/signup"]}>
                     <Auth

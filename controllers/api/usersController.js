@@ -17,7 +17,7 @@ router.get("/", isAuthenticated, function (req, res) {
  */
 router.get("/:id", isAuthenticated, function (req, res) {
   db.User.findById(req.params.id)
-    .populate("posts", "university", "assignments", "scheduleItems")
+    .populate("posts")
     .then(dbModel => res.json(dbModel))
     .catch(err => res.status(422).json(err));
 });

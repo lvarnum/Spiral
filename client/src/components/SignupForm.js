@@ -138,7 +138,9 @@ function SignupForm(props) {
                                             } else {
                                                 setValue(newValue);
                                             }
-                                            formObject.university = (newValue._id);
+                                            if (newValue !== null) {
+                                                formObject.university = (newValue._id);
+                                            }
                                         }}
                                         filterOptions={(options, params) => {
                                             const filtered = filter(options, params);

@@ -45,7 +45,7 @@ function Auth(props) {
     return (
         <>
             {user.email ?
-                <Redirect to="/home" />
+                <Redirect to="/schedule" />
                 :
                 location.pathname === "/login" ?
                     <>
