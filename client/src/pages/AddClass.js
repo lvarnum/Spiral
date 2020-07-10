@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { AddClassForm } from "../components";
-
+import API from "../utils/API";
 
 function AddClass(props) {
     const initialFormState = { prefix: "", number: "", professor: "", building: "", roomNumber: "", startTime: "", endTime: "" };

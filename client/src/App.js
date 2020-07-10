@@ -83,7 +83,7 @@ function App() {
               <Grid item xs={12}>
                 <Switch>
                   <Route exact path={["/", "/home"]}>
-                    <Home />
+                    <Home user={user} logoutUser={logoutUser}/>
                   </Route>
                   <PrivateRoute exact user={user} path={["/calendar"]}>
                     <BigCalendar user={user} />

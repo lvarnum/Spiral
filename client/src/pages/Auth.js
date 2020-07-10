@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useLocation, Redirect } from "react-router-dom";
 import SignupForm from "../components/SignupForm";
 import LoginForm from "../components/LoginForm";
+import API from "../utils/API";
 
 function Auth(props) {
     const { user, loginUser, signupUser } = props;

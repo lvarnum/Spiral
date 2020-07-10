@@ -22,8 +22,8 @@ function Navigation(props) {
             </>
             :
             <>
-              <Button component={Link} to="/login" color="inherit">Login</Button>
-              <Button component={Link} to="/signup" color="inherit">Signup</Button>
+              {/* <Button component={Link} to="/login" color="inherit">Login</Button>
+              <Button component={Link} to="/signup" color="inherit">Signup</Button> */}
             </>
           }
         </Toolbar>
