@@ -6,6 +6,6 @@ export { default as Profile } from "./Profile";
 export { default as AddClass } from "./AddClass";
 export { default as AddAssignment } from "./AddAssignment";
 export { default as Assignments } from "./Assignments";
-export { default as Calendar } from "./Calendar";
+export { default as BigCalendar } from "./Calendar";
 export { default as AddPost } from "./AddPost";
 export { default as ViewPost } from "./ViewPost";

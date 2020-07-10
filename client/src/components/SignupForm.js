@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
     Button, TextField, Container, Grid, Paper, Typography, FormControl, Select, MenuItem, InputLabel, Dialog, DialogTitle,
     DialogContent, DialogContentText, DialogActions
@@ -7,13 +7,10 @@ import Autocomplete, { createFilterOptions } from '@material-ui/lab/Autocomplete
 import API from "../utils/API";
 
 function SignupForm(props) {
-    const { formObject, handleFormSubmit, handleInputChange } = props;
+    const { formObject, handleFormSubmit, handleInputChange, universityState } = props;
 
     const filter = createFilterOptions();
 
-    const [universityState, setUniversities] = useState({
-        universities: []
-    });
     const [value, setValue] = useState(null);
     const [open, toggleOpen] = useState(false);
     const [dialogValue, setDialogValue] = useState({
@@ -21,14 +18,6 @@ function SignupForm(props) {
         state: '',
     });
     const [inputValue, setInputValue] = useState('');
-
-    useEffect(() => {
-        API.University.getAll()
-            .then(res => {
-                setUniversities({universities: res.data});
-            })
-            .catch(err => console.log(err));
-    }, []);
 
     const handleClose = () => {
         setDialogValue({
