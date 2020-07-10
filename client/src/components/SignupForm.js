@@ -277,10 +277,10 @@ function SignupForm(props) {
                                                 />
                                             </DialogContent>
                                             <DialogActions>
-                                                <Button onClick={handleClose} color="primary">
+                                                <Button onClick={handleClose} color="secondary">
                                                     Cancel
                                                 </Button>
-                                                <Button type="submit" color="primary">
+                                                <Button type="submit" color="secondary">
                                                     Add
                                                 </Button>
                                             </DialogActions>
@@ -289,7 +289,7 @@ function SignupForm(props) {
                                 </>
                             </Grid>
                             <Grid item xs={12}>
-                                <Button variant="contained" color="primary" type="submit" onClick={handleFormSubmit}>
+                                <Button variant="contained" color="secondary" type="submit" onClick={handleFormSubmit}>
                                     Signup
                                 </Button>
                             </Grid>

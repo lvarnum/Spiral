@@ -93,7 +93,7 @@ function AddClassForm(props) {
                                 as="input"
                                 type="text"
                             />
-                            <Button variant="contained" color="primary" type="submit" onClick={handleFormSubmit}>
+                            <Button variant="contained" color="secondary" type="submit" onClick={handleFormSubmit}>
                                 Add Class
                             </Button>
                         </Grid>

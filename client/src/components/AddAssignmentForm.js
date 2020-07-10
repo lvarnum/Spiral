@@ -48,7 +48,7 @@ function AddAssignmentForm(props) {
                                     }}
                                 />
                             </Grid>
-                            <Button variant="contained" color="primary" type="submit" onClick={handleFormSubmit}>
+                            <Button variant="contained" color="secondary" type="submit" onClick={handleFormSubmit}>
                                 Add Assignment
                                 </Button>
                         </Grid>

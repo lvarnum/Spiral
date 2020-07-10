@@ -1,10 +1,12 @@
 import React from "react";
 import { Container, Paper, Typography, Grid, Button } from "@material-ui/core";
 
+
+
+
 function Home() {
 
     return (
-        <>
             <Paper>
                 <Container>
                     <Grid container spacing={3}>
@@ -18,17 +20,16 @@ function Home() {
                         </Grid>
                     </Grid>
 
-                    <Button variant="contained" color="primary" type="submit">
+                    <Button variant="contained" color="secondary" type="submit">
                         Login
                     </Button>
 
-                    <Button variant="contained" color="primary" type="submit">
+                    <Button variant="contained" color="secondary" type="submit">
                         Signup
                     </Button>
 
                 </Container>
             </Paper>
-        </>
     )
 }
 

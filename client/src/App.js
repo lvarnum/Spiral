@@ -11,6 +11,8 @@ import { Navigation, Error } from "./components";
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import API from './utils/API';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+
 
 function App() {
   const [user, setUser] = useState({});
@@ -27,12 +29,25 @@ function App() {
     })
   }
 
+  const theme = createMuiTheme({
+    palette: {
+      primary: {
+        main: '#2c387e',
+        contrastText: '#fff',
+      },
+      secondary: {
+        main: '#ffc400',
+        contrastText: '#000',
+      },
+    },
+  })
+
   function signupUser(email, password, firstName, lastName, session, university) {
     const data = {
       email: email,
       password: password,
       firstName: firstName,
-      lastName: lastName, 
+      lastName: lastName,
       session: session,
       university: university
     }
@@ -55,47 +70,49 @@ function App() {
 
   return (
     <>
-      <Router>
-        <Container>
-          <Grid container spacing={3}>
-            <Grid item xs={12}>
-              <Navigation user={user} logoutUser={logoutUser} />
+      <ThemeProvider theme={theme}>
+        <Router>
+          <Container>
+            <Grid container spacing={3}>
+              <Grid item xs={12}>
+                <Navigation user={user} logoutUser={logoutUser} />
+              </Grid>
+              <Grid item xs={12}>
+                {error && <Error error={error} clearError={clearError} />}
+              </Grid>
+              <Grid item xs={12}>
+                <Switch>
+                  <Route exact path={["/", "/home"]}>
+                    <Home />
+                  </Route>
+                  <PrivateRoute exact user={user} path={["/calendar"]}>
+                    <Calendar user={user} />
+                  </PrivateRoute>
+                  <Route exact path={["/schedule"]}>
+                    <Schedule />
+                  </Route>
+                  <PrivateRoute exact user={user} path={["/addassignment"]}>
+                    <AddAssignment user={user} />
+                  </PrivateRoute>
+                  <PrivateRoute exact user={user} path={["/addclass"]}>
+                    <AddClass user={user} />
+                  </PrivateRoute>
+                  <PrivateRoute exact user={user} path={["/bulletinboard"]}>
+                    <BulletinBoard user={user} />
+                  </PrivateRoute>
+                  <Route exact path={["/login", "/signup"]}>
+                    <Auth
+                      user={user}
+                      loginUser={loginUser}
+                      signupUser={signupUser}
+                    />
+                  </Route>
+                </Switch>
+              </Grid>
             </Grid>
-            <Grid item xs={12}>
-              {error && <Error error={error} clearError={clearError} />}
-            </Grid>
-            <Grid item xs={12}>
-              <Switch>
-                <Route exact path={["/", "/home"]}>
-                  <Home />
-                </Route>
-                <PrivateRoute exact user={user} path={["/calendar"]}>
-                  <Calendar user={user} />
-                </PrivateRoute>
-                <Route exact path={["/schedule"]}>
-                  <Schedule />
-                </Route>
-                <PrivateRoute exact user={user} path={["/addassignment"]}>
-                  <AddAssignment user={user} />
-                </PrivateRoute>
-                <PrivateRoute exact user={user} path={["/addclass"]}>
-                  <AddClass user={user} />
-                </PrivateRoute>
-                <PrivateRoute exact user={user} path={["/bulletinboard"]}>
-                  <BulletinBoard user={user} />
-                </PrivateRoute>
-                <Route exact path={["/login", "/signup"]}>
-                  <Auth
-                    user={user}
-                    loginUser={loginUser}
-                    signupUser={signupUser}
-                  />
-                </Route>
-              </Switch>
-            </Grid>
-          </Grid>
-        </Container>
-      </Router>
+          </Container>
+        </Router>
+      </ThemeProvider>
     </>
   );
 }
