@@ -41,8 +41,8 @@ function _create(entity, data) {
  * @param {Integer} id Id of the entity
  * @param {Object} data data to update an entity by
  */
-function _update(id, entity, data) {
-    return axios.post(`/api/${entity}/${id}`, data);
+function _update(entity, id, data) {
+    return axios.put(`/api/${entity}/${id}`, data);
 }
 
 
@@ -140,4 +140,21 @@ export default {
             return _update("assignments", id, data);
         }
     },
+    ScheduleItem: {
+        getAll: function () {
+            return _getAll("scheduleItems");
+        },
+        getById: function (id) {
+            return _getOne("scheduleItems", id);
+        },
+        delete: function (id) {
+            return _delete("scheduleItems", id);
+        },
+        create: function (data) {
+            return _create("scheduleItems", data);
+        },
+        update: function (id, data) {
+            return _update("scheduleItems", id, data);
+        }
+    }
 }

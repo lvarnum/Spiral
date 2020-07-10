@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { AddAssignmentForm } from "../components";
 import API from "../utils/API";
 
-function AddAssignment() {
+function AddAssignment(props) {
     const initialFormState = { name: "", notes: "", due: "" };
     const [formObject, setFormObject] = useState(initialFormState);
 
@@ -14,14 +14,18 @@ function AddAssignment() {
 
     const handleFormSubmit = (event) => {
         event.preventDefault();
-        // Need to add to user and schedule item
-        API.Assignment.create({ 
-        name: formObject.name,
-        notes: formObject.notes,
-        due: formObject.due   
+        // Need to add to schedule item
+        API.Assignment.create({
+            name: formObject.name,
+            notes: formObject.notes,
+            due: formObject.due
         })
-        .then(res => 
-            console.log(res))
+            .then(res => {
+                API.User.update(props.user.id,
+                    {
+                        $push: { assignments: res.data._id }
+                    }).then(res => console.log(res));
+            });
     }
 
     return (

@@ -4,6 +4,8 @@ import { Button, TextField, Container, Grid, Paper, Typography } from '@material
 function AddClassForm(props) {
     const { formObject, handleFormSubmit, handleInputChange } = props;
 
+    // Change class selection to Autocomplete with add option for both prefix and number
+
     return (
         <Paper>
             <Container maxWidth="sm">
