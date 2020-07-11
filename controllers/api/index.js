@@ -5,7 +5,7 @@ const userRoutes = require("./usersController");
 const universityRoutes = require("./universitiesController");
 const courseRoutes = require("./coursesController");
 const assignmentRoutes = require("./assignmentsController");
-const scheduleItemRoutes = require("./scheduleItemsController");
+const scheduleItemRoutes = require("./scheduleitemsController");
 
 
 // Hook up to the router
