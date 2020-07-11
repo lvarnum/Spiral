@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { AddClassForm } from "../components";
+import { AddClassForm, ScheduleTimeline } from "../components";
 import API from "../utils/API";
 
 
@@ -9,13 +9,22 @@ function Schedule(props) {
     const [universityState, setUniversity] = useState({
         university: ""
     });
+    const [scheduleState, setSchedule] = useState({
+        schedule: []
+    });
 
     useEffect(() => {
         API.User.getById(props.user.id)
             .then(res => {
+                var courses = [];
+                res.data.scheduleItems.forEach(item => {
+                    API.ScheduleItem.getById(item)
+                        .then(res => courses.push(res.data))
+                })
                 API.University.getById(res.data.university)
                     .then(res => {
                         setUniversity({ university: res.data });
+                        setSchedule({ schedule: courses })
                     })
             });
     }, [props.user.id]);
@@ -43,12 +52,18 @@ function Schedule(props) {
         setFormObject(initialFormState);
     }
     return (
-        <AddClassForm
-            formObject={formObject}
-            handleInputChange={handleInputChange}
-            handleFormSubmit={handleFormSubmit}
-            universityState={universityState}
-        />
+        <>
+            <ScheduleTimeline
+                scheduleState={scheduleState}
+            />
+
+            <AddClassForm
+                formObject={formObject}
+                handleInputChange={handleInputChange}
+                handleFormSubmit={handleFormSubmit}
+                universityState={universityState}
+            />
+        </>
 
     );
 

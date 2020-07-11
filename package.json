@@ -19,6 +19,7 @@
   "dependencies": {
     "@fullcalendar/daygrid": "^5.1.0",
     "@fullcalendar/react": "^5.1.0",
+    "@material-ui/icons": "^4.9.1",
     "bcryptjs": "2.4.3",
     "dotenv": "^8.2.0",
     "express": "^4.17.0",
