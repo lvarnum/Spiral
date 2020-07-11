@@ -16,19 +16,18 @@ function Schedule(props) {
     useEffect(() => {
         API.User.getById(props.user.id)
             .then(res => {
-                loadSchedule(res.data.scheduleItems);
+                var courses = [];
+                res.data.scheduleItems.forEach(item => {
+                    API.ScheduleItem.getById(item)
+                    .then(res => courses.push(res.data))
+                })
                 API.University.getById(res.data.university)
                     .then(res => {
                         setUniversity({ university: res.data });
+                        setSchedule({schedule: courses})
                     })
             });
     }, [props.user.id]);
-
-    function loadSchedule(scheduleItems) {
-        scheduleItems.forEach(item => {
-            
-        })
-    }
 
     const handleInputChange = (event) => {
         event.preventDefault();
@@ -54,8 +53,8 @@ function Schedule(props) {
     }
     return (
         <>
-            <ScheduleTimeline 
-            scheduleState={scheduleState}
+            <ScheduleTimeline
+                scheduleState={scheduleState}
             />
 
             <AddClassForm
