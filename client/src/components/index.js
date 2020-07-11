@@ -6,3 +6,4 @@ export { default as SignupForm } from "./SignupForm";
 export { default as AddAssignmentForm } from "./AddAssignmentForm";
 export { default as AddClassForm } from "./AddClassForm";
 export { default as Error } from "./Error";
+export { default as ScheduleTimeline } from "./ScheduleTimeline";
