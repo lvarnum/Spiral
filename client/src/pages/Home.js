@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 
 function Home(props) {
-    const { user, logoutUser } = props;
+    const { user } = props;
     return (
         <Paper>
             <Container>
