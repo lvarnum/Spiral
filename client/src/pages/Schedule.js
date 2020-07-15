@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { AddClassForm, ScheduleTimeline } from "../components";
-import { Box, Grid, Typography, Paper, Divider } from "@material-ui/core";
+import { Grid, Typography, Paper, Divider } from "@material-ui/core";
 import API from "../utils/API";
-import moment from "moment";
 
 function Schedule(props) {
     const initialFormState = { prefix: "", number: "", professor: "", building: "", roomNumber: "", startTime: "", endTime: "" };
@@ -58,21 +57,23 @@ function Schedule(props) {
     }
     return (
         <>
-            <Box display="flex" justifyContent="center" alignItems="center" mb={3}>
-                <Typography variant="h3">{universityState.university.name}</Typography>
-            </Box>
-            <Box display="flex" justifyContent="center" alignItems="center" mb={3}>
-                <Typography variant="h5">{userSession.session} Session</Typography>
-            </Box>
-            <Divider variant="middle" />
-            <Box display="flex" justifyContent="center" alignItems="center" mt={3} mb={3}>
-                <AddClassForm
-                    formObject={formObject}
-                    handleInputChange={handleInputChange}
-                    handleFormSubmit={handleFormSubmit}
-                    universityState={universityState}
-                />
-            </Box>
+            <Grid container spacing={2} direction="column" align="center" justify="center" alignItems="center">
+                <Grid item xs={12}>
+                    <Typography variant="h3">{universityState.university.name}</Typography>
+                </Grid>
+                <Grid item xs={12}>
+                    <Typography variant="h5">{userSession.session} Session</Typography>
+                </Grid>
+                <Divider variant="middle" />
+                <Grid item xs={12}>
+                    <AddClassForm
+                        formObject={formObject}
+                        handleInputChange={handleInputChange}
+                        handleFormSubmit={handleFormSubmit}
+                        universityState={universityState}
+                    />
+                </Grid>
+            </Grid>
             <Grid container spacing={0} direction="row" align="center">
                 <Grid item xs={3}>
                     <Paper style={{ backgroundColor: '#2c387e', padding: "10px" }}>
