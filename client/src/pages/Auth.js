@@ -6,7 +6,7 @@ import API from "../utils/API";
 
 function Auth(props) {
     const { user, loginUser, signupUser } = props;
-    const initialFormState = { email: "", password: "", firstName: "", lastName: "", session: "", university: ""};
+    const initialFormState = { email: "", password: "", firstName: "", lastName: "", session: "", university: "" };
     const [formObject, setFormObject] = useState(initialFormState);
     const [universityState, setUniversities] = useState({
         universities: []
@@ -17,7 +17,7 @@ function Auth(props) {
     useEffect(() => {
         API.University.getAll()
             .then(res => {
-                setUniversities({universities: res.data});
+                setUniversities({ universities: res.data });
             })
             .catch(err => console.log(err));
     }, []);
@@ -30,14 +30,14 @@ function Auth(props) {
 
     const handleLoginSubmit = (event) => {
         event.preventDefault();
-        const { email, password} = formObject;
+        const { email, password } = formObject;
         loginUser(email, password);
         setFormObject(initialFormState);
     }
 
     const handleSignupSubmit = (event) => {
         event.preventDefault();
-        const { email, password, firstName, lastName, session, university  } = formObject;
+        const { email, password, firstName, lastName, session, university } = formObject;
         signupUser(email, password, firstName, lastName, session, university);
         setFormObject(initialFormState);
     }

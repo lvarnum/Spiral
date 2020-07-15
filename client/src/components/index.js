@@ -7,5 +7,6 @@ export { default as AddAssignmentForm } from "./AddAssignmentForm";
 export { default as AddClassForm } from "./AddClassForm";
 export { default as Error } from "./Error";
 export { default as ScheduleTimeline } from "./ScheduleTimeline";
+export { default as AssignmentTimeline } from "./AssignmentTimeline";
 export { default as UserInfo } from "./UserInfo";
 export { default as UserPosts } from "./UserPosts";
