@@ -30,12 +30,12 @@ function Home(props) {
                         </>
                         :
                         <>
-                        <div style={styles.buttons}>
-                            <Button style={{marginRight:'1em'}}component={Link} to="/login" variant="contained" color="secondary" type="submit">
+                        <div id="btnRow" style={styles.buttons}>
+                            <Button style={{marginRight:'1em', marginBottom:"1em"}}component={Link} to="/login" variant="contained" color="secondary" type="submit">
                                 Login
                         </Button>
 
-                            <Button component={Link} to="/signup" variant="contained" color="secondary" type="submit">
+                            <Button style={{marginBottom:"1em"}} component={Link} to="/signup" variant="contained" color="secondary" type="submit">
                                 Signup
                         </Button>
                         </div>
