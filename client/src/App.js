@@ -94,6 +94,8 @@ function App() {
                   <PrivateRoute exact user={user} path={["/bulletinboard"]}>
                     <BulletinBoard user={user} />
                   </PrivateRoute>
+                  <PrivateRoute exact user={user} path={["/profile"]}>
+                  </PrivateRoute>
                   <PrivateRoute exact user={user} path={["/assignments"]}>
                     <Assignments user={user} />
                   </PrivateRoute>

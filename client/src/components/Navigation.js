@@ -7,6 +7,7 @@ import { AppBar, Toolbar, Tabs, Tab } from '@material-ui/core';
 import HomeIcon from '@material-ui/icons/Home';
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import ForumIcon from '@material-ui/icons/Forum';
+import PersonPinIcon from '@material-ui/icons/PersonPin';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 const useStyles = makeStyles({
@@ -41,6 +42,7 @@ export default function IconLabelTabs(props) {
             <Tab component={Link} to="/schedule" icon={<HomeIcon />} label="Home" />
             <Tab component={Link} to="/calendar" icon={<CalendarTodayIcon />} label="Calendar" />
             <Tab component={Link} to="/bulletinboard" icon={<ForumIcon />} label="Bulletin Board" />
+            <Tab component={Link} to="/profile" icon={<PersonPinIcon />} label="Profile" />
             <Tab component={Link} to="/home" onClick={logoutUser} icon={<ExitToAppIcon />} label="Logout" />
 
           </Tabs>
