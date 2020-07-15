@@ -10,7 +10,7 @@ function ScheduleTimeline(props) {
         <Timeline>
             {scheduleState.schedule.map(item => (
                 <TimelineItem>
-                    <TimelineOppositeContent>
+                    <TimelineOppositeContent style={{textAlign: "left"}}>
                         <Typography variant="body2" color="textSecondary">{item.startTime} - {item.endTime}</Typography>
                     </TimelineOppositeContent>
                     <TimelineSeparator>
