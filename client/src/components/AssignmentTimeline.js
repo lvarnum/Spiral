@@ -3,11 +3,22 @@ import {
     Timeline, TimelineItem, TimelineSeparator, TimelineConnector, TimelineContent, TimelineDot, TimelineOppositeContent
 } from '@material-ui/lab';
 import LabelImportantIcon from '@material-ui/icons/LabelImportant';
-import { Paper, Typography } from '@material-ui/core/';
+import DeleteIcon from '@material-ui/icons/Delete';
+import CheckIcon from '@material-ui/icons/Check';
+import { Paper, Typography, IconButton } from '@material-ui/core/';
 import moment from "moment";
 
 function AssignmentTimeline(props) {
     const { assignmentState } = props;
+    assignmentState.assignments.sort(function (a, b) {
+        if (a.due > b.due) {
+            return 1;
+        }
+        if (a.due < b.due) {
+            return -1;
+        }
+        return 0;
+    });
 
     return (
         <Timeline >
@@ -29,6 +40,12 @@ function AssignmentTimeline(props) {
                             <Typography variant="h6" component="h1">{item.name}</Typography>
                             <Typography><b>Notes: </b></Typography>
                             <Typography>{item.notes}</Typography>
+                            <IconButton aria-label="delete" style={{ backgroundColor: "white", marginTop: "10px", marginRight: "10px" }}>
+                                <DeleteIcon style={{ color: "red" }} />
+                            </IconButton>
+                            <IconButton aria-label="check" style={{ backgroundColor: "white", marginTop: "10px" }}>
+                                <CheckIcon style={{ color: "green" }} />
+                            </IconButton>
                         </Paper>
                     </TimelineContent>
                 </TimelineItem>

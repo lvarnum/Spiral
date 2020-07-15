@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { AddClassForm, ScheduleTimeline } from "../components";
-import { Grid, Typography, Paper, Divider } from "@material-ui/core";
+import { Grid, Typography } from "@material-ui/core";
 import API from "../utils/API";
 
 function Schedule(props) {
@@ -14,12 +14,20 @@ function Schedule(props) {
     });
     const [userSession, setSession] = useState({
         session: ""
-    })
+    });
+    const [userName, setName] = useState({
+        first: ""
+    });
 
     useEffect(() => {
+        loadSchedule();
+    }, []);
+
+    const loadSchedule = () => {
         API.User.getById(props.user.id)
             .then(res => {
-                setSession({ session: res.data.session })
+                setSession({ session: res.data.session });
+                setName({ first: res.data.firstName })
                 var courses = [];
                 res.data.scheduleItems.forEach(item => {
                     API.ScheduleItem.getById(item)
@@ -31,7 +39,7 @@ function Schedule(props) {
                         setSchedule({ schedule: courses })
                     });
             });
-    }, [props.user.id]);
+    }
 
     const handleInputChange = (event) => {
         event.preventDefault();
@@ -51,20 +59,24 @@ function Schedule(props) {
             API.User.update(props.user.id,
                 {
                     $push: { scheduleItems: res.data._id }
-                }).then(res => console.log(res))
+                }).then(res => {
+                    setFormObject(initialFormState);
+                    loadSchedule();
+                });
         });
-        setFormObject(initialFormState);
     }
     return (
         <>
             <Grid container spacing={2} direction="column" align="center" justify="center" alignItems="center">
                 <Grid item xs={12}>
-                    <Typography variant="h3">{universityState.university.name}</Typography>
+                    <Typography variant="h2">{userName.first}'s Schedule</Typography>
+                </Grid >
+                <Grid item xs={12}>
+                    <Typography variant="h4">{universityState.university.name}</Typography>
                 </Grid>
                 <Grid item xs={12}>
                     <Typography variant="h5">{userSession.session} Session</Typography>
                 </Grid>
-                <Divider variant="middle" />
                 <Grid item xs={12}>
                     <AddClassForm
                         formObject={formObject}
@@ -75,19 +87,7 @@ function Schedule(props) {
                 </Grid>
             </Grid>
             <Grid container spacing={0} direction="row" align="center">
-                <Grid item xs={3}>
-                    <Paper style={{ backgroundColor: '#2c387e', padding: "10px" }}>
-                        <Typography variant="h2" style={{ color: "white" }}>S</Typography>
-                        <Typography variant="h2" style={{ color: "white" }}>C</Typography>
-                        <Typography variant="h2" style={{ color: "white" }}>H</Typography>
-                        <Typography variant="h2" style={{ color: "white" }}>E</Typography>
-                        <Typography variant="h2" style={{ color: "white" }}>D</Typography>
-                        <Typography variant="h2" style={{ color: "white" }}>U</Typography>
-                        <Typography variant="h2" style={{ color: "white" }}>L</Typography>
-                        <Typography variant="h2" style={{ color: "white" }}>E</Typography>
-                    </Paper>
-                </Grid >
-                <Grid item xs={9}>
+                <Grid item xs={12}>
                     <ScheduleTimeline
                         scheduleState={scheduleState}
                         userSession={userSession}

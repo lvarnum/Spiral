@@ -45,7 +45,7 @@ function ScheduleTimeline(props) {
                     </TimelineSeparator>
                     <TimelineContent >
                         <Paper elevation={3} style={{ padding: "10px", backgroundColor: "#2c387e", color: "white" }}>
-                            <Typography variant="h6" component="h1">{item.course}</Typography>
+                            <Typography variant="h5" component="h1">{item.course}</Typography>
                             <Typography><PersonIcon color="secondary" style={{ marginRight: "5px" }} />
                                 {item.professor}</Typography>
                             <Typography><LocationOnIcon color="secondary" style={{ marginRight: "5px" }} />
