@@ -5,7 +5,7 @@ import {
   Route,
   Redirect
 } from "react-router-dom";
-import { Home, Schedule, BulletinBoard, BigCalendar, Assignments } from "./pages";
+import { Home, Schedule, BulletinBoard, BigCalendar, Assignments, Profile } from "./pages";
 import Auth from "./pages/Auth"
 import { Navigation, Error } from "./components";
 import Container from '@material-ui/core/Container';
@@ -95,6 +95,7 @@ function App() {
                     <BulletinBoard user={user} />
                   </PrivateRoute>
                   <PrivateRoute exact user={user} path={["/profile"]}>
+                    <Profile user={user} />
                   </PrivateRoute>
                   <PrivateRoute exact user={user} path={["/assignments"]}>
                     <Assignments user={user} />
