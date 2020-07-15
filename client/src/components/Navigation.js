@@ -28,7 +28,7 @@ export default function IconLabelTabs(props) {
 
   return (
     <AppBar position="static">
-      <Toolbar>
+      <Toolbar style={{marginRight:"auto", marginLeft:"auto"}}>
         <Paper square className={classes.root}>
           <Tabs
             value={value}

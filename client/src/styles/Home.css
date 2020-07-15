@@ -1,3 +1,5 @@
 body {
     background-image: url(../utils/images/spiralbg.png);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
