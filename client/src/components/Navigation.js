@@ -1,9 +1,7 @@
-// import { AppBar, Toolbar } from '@material-ui/core';
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from "react-router-dom";
-import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
-import { AppBar, Toolbar, Tabs, Tab } from '@material-ui/core';
+import { Tabs, Tab, Paper } from '@material-ui/core';
 import HomeIcon from '@material-ui/icons/Home';
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import ForumIcon from '@material-ui/icons/Forum';
@@ -11,14 +9,15 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 const useStyles = makeStyles({
   root: {
-    // flexGrow: 1,
-    maxWidth: 1000,
-  },
+    maxWidth: "auto"
+  }
 });
 
-export default function IconLabelTabs(props) {
+function Navigation(props) {
+  const { user } = props;
+
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = useState(0);
   const { logoutUser } = props;
 
 
@@ -27,28 +26,31 @@ export default function IconLabelTabs(props) {
   };
 
   return (
-    <AppBar position="static">
-      <Toolbar>
-        <Paper square className={classes.root}>
+    <>
+      {
+        user.email &&
+        <Paper square style={{ backgroundColor: "#2c387e" }} className={classes.root}>
           <Tabs
             value={value}
             onChange={handleChange}
             variant="fullWidth"
             indicatorColor="primary"
             textColor="secondary"
-            aria-label="icon label tabs example"
+            aria-label="navbar"
           >
+
             <Tab component={Link} to="/schedule" icon={<HomeIcon />} label="Home" />
             <Tab component={Link} to="/calendar" icon={<CalendarTodayIcon />} label="Calendar" />
             <Tab component={Link} to="/bulletinboard" icon={<ForumIcon />} label="Bulletin Board" />
             <Tab component={Link} to="/home" onClick={logoutUser} icon={<ExitToAppIcon />} label="Logout" />
-
           </Tabs>
         </Paper>
-      </Toolbar>
-    </AppBar>
+      }
+    </>
   );
 }
+
+export default Navigation;
 
 
 
