@@ -7,13 +7,16 @@ const assignmentSchema = new Schema(
         name: {
             type: String,
             trim: true
-            // Unique ?
         },
         due: {
             type: Date
         },
         notes: {
             type: String
+        },
+        done: {
+            type: Boolean,
+            defaultValue: false
         }
     }
 );
