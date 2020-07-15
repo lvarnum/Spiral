@@ -25,7 +25,7 @@ function ScheduleTimeline(props) {
         <Timeline >
             {scheduleState.schedule.map(item => (
                 <TimelineItem key={item._id} >
-                    <TimelineOppositeContent style={{textAlign:"left", flexBasis:"20%"}}>
+                    <TimelineOppositeContent style={{textAlign:"left", flex: "0 0 40%"}}>
                         {item.startTime !== '' &&
                             <Typography>
                                 {moment(item.startTime, 'HH:mm').format('hh:mm a')} - {moment(item.endTime, 'HH:mm').format('hh:mm a')}
