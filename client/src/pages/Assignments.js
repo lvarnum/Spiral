@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { AddAssignmentForm, AssignmentTimeline } from "../components";
-import { Box, Grid, Typography, Paper, Divider } from "@material-ui/core";
+import { Grid, Typography, Paper, Divider } from "@material-ui/core";
 import { useLocation } from 'react-router-dom'
 import API from "../utils/API";
 
@@ -61,20 +61,22 @@ function Assignments(props) {
 
     return (
         <>
-            <Box display="flex" justifyContent="center" alignItems="center" mb={3}>
-                <Typography variant="h3">{courseState.course}</Typography>
-            </Box>
-            <Box display="flex" justifyContent="center" alignItems="center" mb={3}>
-                <Typography variant="h5">{location.session} Session</Typography>
-            </Box>
-            <Divider variant="middle" />
-            <Box display="flex" justifyContent="center" alignItems="center" mb={3} mt={3}>
-                <AddAssignmentForm
-                    formObject={formObject}
-                    handleInputChange={handleInputChange}
-                    handleFormSubmit={handleFormSubmit}
-                />
-            </Box>
+            <Grid container spacing={2} justify="center" direction="column" align="center" alignItems="center">
+                <Grid item xs={5}>
+                    <Typography variant="h3">{courseState.course}</Typography>
+                </Grid>
+                <Grid item xs={5}>
+                    <Typography variant="h5">{location.session} Session</Typography>
+                </Grid>
+                <Divider variant="middle" />
+                <Grid item xs={5}>
+                    <AddAssignmentForm
+                        formObject={formObject}
+                        handleInputChange={handleInputChange}
+                        handleFormSubmit={handleFormSubmit}
+                    />
+                </Grid>
+            </Grid>
             <Grid container spacing={0} justify="center" direction="row" align="center">
                 <Grid item xs={3}>
                     <Paper style={{ backgroundColor: '#2c387e', padding: "10px" }}>

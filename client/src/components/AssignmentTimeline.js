@@ -13,7 +13,7 @@ function AssignmentTimeline(props) {
         <Timeline >
             {assignmentState.assignments.map(item => (
                 <TimelineItem key={item._id}>
-                    <TimelineOppositeContent>
+                    <TimelineOppositeContent style={{ flex: "0 0 20%" }}>
                         <Typography>
                             {moment(item.due).format('MM/DD/YYYY')}
                         </Typography>
