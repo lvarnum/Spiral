@@ -5,7 +5,7 @@ import {
   Route,
   Redirect
 } from "react-router-dom";
-import { Home, Schedule, BulletinBoard, BigCalendar, Assignments, Profile } from "./pages";
+import { Home, Schedule, BulletinBoard, Calendar, Assignments, Profile } from "./pages";
 import Auth from "./pages/Auth"
 import { Navigation, Error } from "./components";
 import Container from '@material-ui/core/Container';
@@ -83,10 +83,10 @@ function App() {
               <Grid item xs={12}>
                 <Switch>
                   <Route exact path={["/", "/home"]}>
-                    <Home user={user} logoutUser={logoutUser}/>
+                    <Home user={user} logoutUser={logoutUser} />
                   </Route>
                   <PrivateRoute exact user={user} path={["/calendar"]}>
-                    <BigCalendar user={user} />
+                    <Calendar user={user} />
                   </PrivateRoute>
                   <PrivateRoute exact user={user} path={["/schedule"]}>
                     <Schedule user={user} />

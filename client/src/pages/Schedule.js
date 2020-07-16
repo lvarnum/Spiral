@@ -4,7 +4,7 @@ import { Grid, Typography } from "@material-ui/core";
 import API from "../utils/API";
 
 function Schedule(props) {
-    const initialFormState = { prefix: "", number: "", professor: "", building: "", roomNumber: "", startTime: "", endTime: "" };
+    const initialFormState = { prefix: "", number: "", professor: "", building: "", roomNumber: "", startTime: "", endTime: "", days: [] };
     const [formObject, setFormObject] = useState(initialFormState);
     const [universityState, setUniversity] = useState({
         university: ""
@@ -26,18 +26,11 @@ function Schedule(props) {
     const loadSchedule = () => {
         API.User.getById(props.user.id)
             .then(res => {
+                console.log(res.data);
                 setSession({ session: res.data.session });
-                setName({ first: res.data.firstName })
-                var courses = [];
-                res.data.scheduleItems.forEach(item => {
-                    API.ScheduleItem.getById(item)
-                        .then(res => courses.push(res.data));
-                });
-                API.University.getById(res.data.university)
-                    .then(res => {
-                        setUniversity({ university: res.data });
-                        setSchedule({ schedule: courses })
-                    });
+                setName({ first: res.data.firstName });
+                setSchedule({ schedule: res.data.scheduleItems });
+                setUniversity({ university: res.data.university });
             });
     }
 
@@ -54,7 +47,8 @@ function Schedule(props) {
             professor: formObject.professor,
             startTime: formObject.startTime,
             endTime: formObject.endTime,
-            location: `${formObject.building} ${formObject.roomNumber}`
+            location: `${formObject.building} ${formObject.roomNumber}`,
+            days: formObject.days
         }).then(res => {
             API.User.update(props.user.id,
                 {
@@ -67,7 +61,8 @@ function Schedule(props) {
     }
     return (
         <>
-            <Grid container spacing={2} direction="column" align="center" justify="center" alignItems="center">
+            <Grid container spacing={2} direction="column" align="center" justify="center" alignItems="center"
+                style={{ border: "solid 2px #2c387e", marginBottom: "15px" }}>
                 <Grid item xs={12}>
                     <Typography variant="h2">{userName.first}'s Schedule</Typography>
                 </Grid >
@@ -77,6 +72,8 @@ function Schedule(props) {
                 <Grid item xs={12}>
                     <Typography variant="h5">{userSession.session} Session</Typography>
                 </Grid>
+            </Grid>
+            <Grid container spacing={2} direction="column" align="center" justify="center" alignItems="center">
                 <Grid item xs={12}>
                     <AddClassForm
                         formObject={formObject}
@@ -86,7 +83,7 @@ function Schedule(props) {
                     />
                 </Grid>
             </Grid>
-            <Grid container spacing={0} direction="row" align="center">
+            <Grid container spacing={0} direction="row" align="center" justify="center">
                 <Grid item xs={12}>
                     <ScheduleTimeline
                         scheduleState={scheduleState}
