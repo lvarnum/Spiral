@@ -45,7 +45,7 @@ function BulletinBoard(props) {
 
     return (
         <>
-            <Grid container spacing={3}>
+            <Grid container spacing={5} direction="column" align="center" justify="center" alignItems="center">
                 <Grid item xs={12}>
                     <PostForm
                         formObject={formObject}

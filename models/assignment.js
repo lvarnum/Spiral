@@ -15,8 +15,7 @@ const assignmentSchema = new Schema(
             type: String
         },
         done: {
-            type: Boolean,
-            defaultValue: false
+            type: Boolean
         }
     }
 );

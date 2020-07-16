@@ -7,7 +7,12 @@ const isAuthenticated = require("../../config/middleware/isAuthenticated");
  */
 router.get("/", isAuthenticated, function (req, res) {
   db.User.find(req.query)
-    .populate("posts", "university", "assignments", "scheduleItems")
+    .populate([
+      { path: "posts", model: "Post" },
+      { path: "scheduleItems", model: "ScheduleItem" },
+      { path: "university", model: "University" },
+      { path: "assignments", model: "Assignment" }
+    ])
     .then(dbModel => res.json(dbModel))
     .catch(err => res.status(422).json(err));
 });
@@ -17,7 +22,12 @@ router.get("/", isAuthenticated, function (req, res) {
  */
 router.get("/:id", isAuthenticated, function (req, res) {
   db.User.findById(req.params.id)
-    .populate("posts")
+    .populate([
+      { path: "posts", model: "Post" },
+      { path: "scheduleItems", model: "ScheduleItem" },
+      { path: "university", model: "University" },
+      { path: "assignments", model: "Assignment" }
+    ])
     .then(dbModel => res.json(dbModel))
     .catch(err => res.status(422).json(err));
 });

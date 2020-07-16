@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import {
-    Button, IconButton, TextField, Grid, Paper, Typography, Dialog, DialogActions, DialogContent, Checkbox, FormControlLabel
+    Button, IconButton, TextField, Grid, Paper, Typography, Dialog, DialogActions, DialogContent, Checkbox, FormControlLabel,
+    FormControl, FormGroup, FormLabel
 } from '@material-ui/core';
 import Autocomplete, { createFilterOptions } from '@material-ui/lab/Autocomplete';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
@@ -8,7 +9,6 @@ import API from "../utils/API";
 
 function AddClassForm(props) {
     const { formObject, handleFormSubmit, handleInputChange, universityState } = props;
-    console.log(universityState);
 
     const filter = createFilterOptions();
 
@@ -19,6 +19,15 @@ function AddClassForm(props) {
         numbers: []
     });
     const [checked, setChecked] = useState(false);
+    const [days, setDays] = useState({
+        Monday: false,
+        Tuesday: false,
+        Wednesday: false,
+        Thursday: false,
+        Friday: false,
+        Saturday: false,
+        Sunday: false
+    })
 
     const handleOnlineChange = (event) => {
         setChecked(event.target.checked);
@@ -28,9 +37,12 @@ function AddClassForm(props) {
     };
 
     const handleChange = (event) => {
-        setChecked(event.target.checked);
+        setDays({ ...days, [event.target.name]: event.target.checked });
         if (event.target.checked) {
-            formObject.days.push(event.target.value);
+            formObject.days.push(event.target.name);
+        }
+        else {
+            formObject.days.filter(day => day !== event.target.name);
         }
     }
 
@@ -45,6 +57,7 @@ function AddClassForm(props) {
     const handleClick = () => {
         setPValue('');
         setNValue('');
+        setDays({ Monday: false, Tuesday: false, Wednesday: false, Thursday: false, Friday: false, Saturday: false, Sunday: false })
     };
 
     return (
@@ -213,93 +226,39 @@ function AddClassForm(props) {
                                 />
                             </Grid>
                             <Grid item xs={12}>
-                                <Grid item xs={12}>
-                                    <Typography variant="h6">Class Days</Typography>
-                                </Grid>
-                                <FormControlLabel
-                                    control={
-                                        <Checkbox
-                                            checked={checked}
-                                            onChange={handleChange}
-                                            name="weekday"
-                                            color="primary"
-                                            value="Monday"
+                                <FormControl component="fieldset">
+                                    <FormLabel component="legend">Class Days</FormLabel>
+                                    <FormGroup>
+                                        <FormControlLabel
+                                            control={<Checkbox checked={days.Monday} onChange={handleChange} name="Monday" color="primary" />}
+                                            label="Monday"
                                         />
-                                    }
-                                    label="Monday"
-                                />
-                                <FormControlLabel
-                                    control={
-                                        <Checkbox
-                                            checked={checked}
-                                            onChange={handleChange}
-                                            name="weekday"
-                                            color="primary"
-                                            value="Tuesday"
+                                        <FormControlLabel
+                                            control={<Checkbox checked={days.Tuesday} onChange={handleChange} name="Tuesday" color="primary" />}
+                                            label="Tuesday"
                                         />
-                                    }
-                                    label="Tuesday"
-                                />
-                                <FormControlLabel
-                                    control={
-                                        <Checkbox
-                                            checked={checked}
-                                            onChange={handleChange}
-                                            name="weekday"
-                                            color="primary"
-                                            value="Wednesday"
+                                        <FormControlLabel
+                                            control={<Checkbox checked={days.Wednesday} onChange={handleChange} name="Wednesday" color="primary" />}
+                                            label="Wednesday"
                                         />
-                                    }
-                                    label="Wednesday"
-                                />
-                                <FormControlLabel
-                                    control={
-                                        <Checkbox
-                                            checked={checked}
-                                            onChange={handleChange}
-                                            name="weekday"
-                                            color="primary"
-                                            value="Thursday"
+                                        <FormControlLabel
+                                            control={<Checkbox checked={days.Thursday} onChange={handleChange} name="Thursday" color="primary" />}
+                                            label="Thursday"
                                         />
-                                    }
-                                    label="Thursday"
-                                />
-                                <FormControlLabel
-                                    control={
-                                        <Checkbox
-                                            checked={checked}
-                                            onChange={handleChange}
-                                            name="weekday"
-                                            color="primary"
-                                            value="Friday"
+                                        <FormControlLabel
+                                            control={<Checkbox checked={days.Friday} onChange={handleChange} name="Friday" color="primary" />}
+                                            label="Friday"
                                         />
-                                    }
-                                    label="Friday"
-                                />
-                                <FormControlLabel
-                                    control={
-                                        <Checkbox
-                                            checked={checked}
-                                            onChange={handleChange}
-                                            name="weekday"
-                                            color="primary"
-                                            value="Saturday"
+                                        <FormControlLabel
+                                            control={<Checkbox checked={days.Saturday} onChange={handleChange} name="Saturday" color="primary" />}
+                                            label="Saturday"
                                         />
-                                    }
-                                    label="Saturday"
-                                />
-                                <FormControlLabel
-                                    control={
-                                        <Checkbox
-                                            checked={checked}
-                                            onChange={handleChange}
-                                            name="weekday"
-                                            color="primary"
-                                            value="Sunday"
+                                        <FormControlLabel
+                                            control={<Checkbox checked={days.Sunday} onChange={handleChange} name="Sunday" color="primary" />}
+                                            label="Sunday"
                                         />
-                                    }
-                                    label="Sunday"
-                                />
+                                    </FormGroup>
+                                </FormControl>
                             </Grid>
                             <Grid item xs={12}>
                                 <TextField

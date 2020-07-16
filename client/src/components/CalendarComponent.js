@@ -1,23 +1,52 @@
-import React from "react";
-import FullCalendar from '@fullcalendar/react'
-import dayGridPlugin from '@fullcalendar/daygrid'
+import React, { useState } from "react";
+import FullCalendar from '@fullcalendar/react';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import timeGridPlugin from "@fullcalendar/timegrid";
 import moment from "moment";
 
 
 function CalendarComponent(props) {
     const { scheduleState, assignmentState } = props;
-    var events = [];
-    assignmentState.assignments.forEach(item => {
-        events.push({ title: item.name, date: moment(item.due).format('YYYY-MM-DD') });
+    const [dayState, setDays] = useState({
+        Monday: 1,
+        Tuesday: 2,
+        Wednesday: 3,
+        Thursday: 4,
+        Friday: 5,
+        Saturday: 6,
+        Sunday: 0
     });
-    // scheduleState.schedule.forEach(item => {
-    //     events.push({ title: item.course, starTime: moment(item.startTime, 'HH:mm').format('hh:mm a'), endTime: moment(item.endTime, 'HH:mm').format('hh:mm a') });
-    // });
+    var events = [];
+
+    assignmentState.assignments.forEach(item => {
+        events.push({
+            title: item.name,
+            date: moment(item.due).format('YYYY-MM-DD')
+        });
+    });
+    scheduleState.schedule.forEach(item => {
+        var days = [];
+        item.days.forEach(day => {
+            days.push(dayState[day]);
+        });
+        events.push({
+            title: item.course,
+            startTime: item.startTime,
+            endTime: item.endTime,
+            daysOfWeek: days,
+            startRecur: moment().format('YYYY-MM-DD')
+        });
+    });
 
     return (
         <FullCalendar
-            plugins={[dayGridPlugin]}
+            plugins={[dayGridPlugin, timeGridPlugin]}
             initialView="dayGridMonth"
+            headerToolbar={{
+                left: "prev,next",
+                center: "title",
+                right: "dayGridMonth,timeGridWeek,timeGridDay"
+            }}
             events={events}
         />
     )

@@ -26,11 +26,11 @@ function Schedule(props) {
     const loadSchedule = () => {
         API.User.getById(props.user.id)
             .then(res => {
-                console.log(res.data);
                 setSession({ session: res.data.session });
                 setName({ first: res.data.firstName });
                 setSchedule({ schedule: res.data.scheduleItems });
-                setUniversity({ university: res.data.university });
+                API.University.getById(res.data.university._id)
+                    .then(res => setUniversity({ university: res.data }))
             });
     }
 

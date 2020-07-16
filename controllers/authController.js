@@ -18,7 +18,7 @@ router.post("/signup", function (req, res) {
   console.log(req.body);
   db.User.create(
     req.body
-    )
+  )
     .then(function () {
       res.redirect(307, "/auth/login");
     })

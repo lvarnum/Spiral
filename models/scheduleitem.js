@@ -19,6 +19,9 @@ const scheduleItemSchema = new Schema(
             type: String
             // make actual time Moment.js or Material.UI Time Input
         },
+        days: [
+            { type: String }
+        ],
         location: {
             type: String
         },
