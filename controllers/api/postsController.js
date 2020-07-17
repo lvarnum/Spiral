@@ -6,7 +6,7 @@ const isAuthenticated = require("../../config/middleware/isAuthenticated");
  * Post - Read All
  */
 router.get("/", isAuthenticated, function (req, res) {
-  db.Post.find({}).sort([['date', -1]])
+  db.Post.find(req.body).sort([['date', -1]])
     .populate("user")
     .then(dbModel => res.json(dbModel))
     .catch(err => res.status(422).json(err));

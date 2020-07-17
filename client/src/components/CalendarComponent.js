@@ -25,17 +25,19 @@ function CalendarComponent(props) {
         });
     });
     scheduleState.schedule.forEach(item => {
-        var days = [];
-        item.days.forEach(day => {
-            days.push(dayState[day]);
-        });
-        events.push({
-            title: item.course,
-            startTime: item.startTime,
-            endTime: item.endTime,
-            daysOfWeek: days,
-            startRecur: moment().format('YYYY-MM-DD')
-        });
+        if (item.location !== "Online ") {
+            var days = [];
+            item.days.forEach(day => {
+                days.push(dayState[day]);
+            });
+            events.push({
+                title: item.course,
+                startTime: item.startTime,
+                endTime: item.endTime,
+                daysOfWeek: days,
+                startRecur: moment().format('YYYY-MM-DD')
+            });
+        }
     });
 
     return (
