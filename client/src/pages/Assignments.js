@@ -24,9 +24,7 @@ function Assignments(props) {
         API.ScheduleItem.getById(location.course)
             .then(res => {
                 setCourse({ course: res.data.course })
-                var assignments = [];
-                res.data.assignments.forEach(item => assignments.push(item));
-                setAssignments({ assignments: assignments });
+                setAssignments({ assignments: res.data.assignments });
             });
     }
 
@@ -41,7 +39,8 @@ function Assignments(props) {
         API.Assignment.create({
             name: formObject.name,
             notes: formObject.notes,
-            due: formObject.due
+            due: formObject.due,
+            done: false
         })
             .then(res => {
                 API.User.update(props.user.id,
@@ -58,15 +57,36 @@ function Assignments(props) {
             });
     }
 
+    const handleCheck = (id) => {
+        API.Assignment.update(id, {
+            done: true
+        }).then(res => loadAssignments());
+
+    }
+
+    const handleDelete = (id) => {
+        API.Assignment.delete(id)
+            .then(res => loadAssignments());
+        API.User.update(props.user.id, {
+            $pull: { assignments: id }
+        });
+        API.ScheduleItem.update(location.course, {
+            $pull: { assignments: id }
+        });
+    }
+
     return (
         <>
-            <Grid container spacing={2} justify="center" direction="column" align="center" alignItems="center">
+            <Grid container spacing={2} direction="column" align="center" justify="center" alignItems="center"
+                style={{ border: "solid 2px #2c387e", marginBottom: "15px" }}>
                 <Grid item xs={5}>
                     <Typography variant="h3">{courseState.course}</Typography>
                 </Grid>
                 <Grid item xs={5}>
-                    <Typography variant="h5">{location.session} Session</Typography>
+                    <Typography variant="h5">{props.user.session} Session</Typography>
                 </Grid>
+            </Grid>
+            <Grid container spacing={2} direction="column" align="center" justify="center" alignItems="center">
                 <Grid item xs={5}>
                     <AddAssignmentForm
                         formObject={formObject}
@@ -79,6 +99,8 @@ function Assignments(props) {
                 <Grid item xs={9}>
                     <AssignmentTimeline
                         assignmentState={assignmentState}
+                        handleCheck={handleCheck}
+                        handleDelete={handleDelete}
                     />
                 </Grid>
             </Grid>

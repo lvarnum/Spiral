@@ -7,6 +7,10 @@ router.post("/login", passport.authenticate("local"), function (req, res) {
   // Sending back a password, even a hashed password, isn't a good idea
   res.json({
     email: req.user.email,
+    firstName: req.user.firstName,
+    lastName: req.user.lastName,
+    university: req.user.university,
+    session: req.user.session,
     id: req.user.id
   });
 });
@@ -18,7 +22,7 @@ router.post("/signup", function (req, res) {
   console.log(req.body);
   db.User.create(
     req.body
-    )
+  )
     .then(function () {
       res.redirect(307, "/auth/login");
     })

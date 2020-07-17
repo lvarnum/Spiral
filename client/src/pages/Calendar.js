@@ -1,31 +1,34 @@
-import React, { Component } from "react";
-import moment from "moment";
-import FullCalendar from '@fullcalendar/react'
-import dayGridPlugin from '@fullcalendar/daygrid'
+import React, { useState, useEffect } from "react";
+import { CalendarComponent } from "../components"
+import API from "../utils/API";
 
 
-class BigCalendar extends Component {
+function Calendar(props) {
+  const [assignmentState, setAssignments] = useState({
+    assignments: []
+  });
+  const [scheduleState, setSchedule] = useState({
+    schedule: []
+  });
 
-  render() {
-    return (
-      <FullCalendar
-        plugins={[dayGridPlugin]}
-        initialView="dayGridMonth"
-      />
-    )
+  useEffect(() => {
+    loadData();
+  }, []);
+
+  const loadData = () => {
+    API.User.getById(props.user.id)
+      .then(res => {
+        setAssignments({ assignments: res.data.assignments });
+        setSchedule({ schedule: res.data.scheduleItems });
+      });
   }
 
-    // state = {
-    //   events: [
-    //     {
-    //       start: moment().toDate(),
-    //       end: moment().add(1, "days").toDate(),
-    //       title: "New",
-    //     },
-    //   ],
-    // };
-
-  
+  return (
+    <CalendarComponent
+      scheduleState={scheduleState}
+      assignmentState={assignmentState}
+    />
+  )
 }
 
-export default BigCalendar;
+export default Calendar;

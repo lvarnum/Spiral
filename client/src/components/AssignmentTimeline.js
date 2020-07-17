@@ -9,7 +9,7 @@ import { Paper, Typography, IconButton } from '@material-ui/core/';
 import moment from "moment";
 
 function AssignmentTimeline(props) {
-    const { assignmentState } = props;
+    const { assignmentState, handleCheck, handleDelete } = props;
     assignmentState.assignments.sort(function (a, b) {
         if (a.due > b.due) {
             return 1;
@@ -24,10 +24,17 @@ function AssignmentTimeline(props) {
         <Timeline >
             {assignmentState.assignments.map(item => (
                 <TimelineItem key={item._id}>
-                    <TimelineOppositeContent style={{ flex: "0 0 20%" }}>
-                        <Typography>
-                            {moment(item.due).format('MM/DD/YYYY')}
-                        </Typography>
+                    <TimelineOppositeContent style={{ flex: "0 0 15%" }}>
+                        {item.done === false &&
+                            <Typography>
+                                {moment(item.due).format('MM/DD/YYYY')}
+                            </Typography>
+                        }
+                        {item.done === true &&
+                            <Typography style={{ textDecoration: "line-through" }}>
+                                {moment(item.due).format('MM/DD/YYYY')}
+                            </Typography>
+                        }
                     </TimelineOppositeContent>
                     <TimelineSeparator>
                         <TimelineDot>
@@ -37,15 +44,33 @@ function AssignmentTimeline(props) {
                     </TimelineSeparator>
                     <TimelineContent >
                         <Paper elevation={3} style={{ padding: "10px", backgroundColor: "#2c387e", color: "white" }}>
-                            <Typography variant="h6" component="h1">{item.name}</Typography>
-                            <Typography><b>Notes: </b></Typography>
-                            <Typography>{item.notes}</Typography>
-                            <IconButton aria-label="delete" style={{ backgroundColor: "white", marginTop: "10px", marginRight: "10px" }}>
-                                <DeleteIcon style={{ color: "red" }} />
-                            </IconButton>
-                            <IconButton aria-label="check" style={{ backgroundColor: "white", marginTop: "10px" }}>
-                                <CheckIcon style={{ color: "green" }} />
-                            </IconButton>
+                            {item.done === false &&
+                                <>
+                                    <Typography variant="h6" component="h1">{item.name}</Typography>
+                                    <Typography><b>Notes: </b></Typography>
+                                    <Typography>{item.notes}</Typography>
+                                    <IconButton aria-label="check"
+                                        style={{ backgroundColor: "white", marginTop: "10px", marginRight: "10px" }}
+                                        onClick={handleCheck.bind(this, item._id)}>
+                                        <CheckIcon style={{ color: "green" }} />
+                                    </IconButton>
+                                    <IconButton aria-label="delete" style={{ backgroundColor: "white", marginTop: "10px" }}
+                                        onClick={handleDelete.bind(this, item._id)}>
+                                        <DeleteIcon style={{ color: "red" }} />
+                                    </IconButton>
+                                </>
+                            }
+                            {item.done === true &&
+                                <>
+                                    <Typography variant="h5" component="h1" style={{ textDecoration: "line-through" }}>{item.name}</Typography>
+                                    <Typography style={{ textDecoration: "line-through" }}><b>Notes: </b></Typography>
+                                    <Typography style={{ textDecoration: "line-through" }}>{item.notes}</Typography>
+                                    <IconButton aria-label="delete" style={{ backgroundColor: "white", marginTop: "10px" }}
+                                        onClick={handleDelete.bind(this, item._id)}>
+                                        <DeleteIcon style={{ color: "red" }} />
+                                    </IconButton>
+                                </>
+                            }
                         </Paper>
                     </TimelineContent>
                 </TimelineItem>

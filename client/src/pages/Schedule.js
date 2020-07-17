@@ -1,22 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { AddClassForm, ScheduleTimeline } from "../components";
-import { Grid, Typography } from "@material-ui/core";
+import { Grid, Typography, IconButton } from "@material-ui/core";
+import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import API from "../utils/API";
+import moment from "moment";
+import { Link } from "react-router-dom";
 
 function Schedule(props) {
-    const initialFormState = { prefix: "", number: "", professor: "", building: "", roomNumber: "", startTime: "", endTime: "" };
+    const initialFormState = { prefix: "", number: "", professor: "", building: "", roomNumber: "", startTime: "", endTime: "", days: [] };
     const [formObject, setFormObject] = useState(initialFormState);
     const [universityState, setUniversity] = useState({
         university: ""
     });
     const [scheduleState, setSchedule] = useState({
         schedule: []
-    });
-    const [userSession, setSession] = useState({
-        session: ""
-    });
-    const [userName, setName] = useState({
-        first: ""
     });
 
     useEffect(() => {
@@ -26,19 +23,10 @@ function Schedule(props) {
     const loadSchedule = () => {
         API.User.getById(props.user.id)
             .then(res => {
-                setSession({ session: res.data.session });
-                setName({ first: res.data.firstName })
-                var courses = [];
-                res.data.scheduleItems.forEach(item => {
-                    API.ScheduleItem.getById(item)
-                        .then(res => courses.push(res.data));
-                });
-                API.University.getById(res.data.university)
-                    .then(res => {
-                        setUniversity({ university: res.data });
-                        setSchedule({ schedule: courses })
-                    });
+                setSchedule({ schedule: res.data.scheduleItems });
             });
+        API.University.getById(props.user.university)
+            .then(res => setUniversity({ university: res.data }))
     }
 
     const handleInputChange = (event) => {
@@ -54,7 +42,8 @@ function Schedule(props) {
             professor: formObject.professor,
             startTime: formObject.startTime,
             endTime: formObject.endTime,
-            location: `${formObject.building} ${formObject.roomNumber}`
+            location: `${formObject.building} ${formObject.roomNumber}`,
+            days: formObject.days
         }).then(res => {
             API.User.update(props.user.id,
                 {
@@ -67,15 +56,25 @@ function Schedule(props) {
     }
     return (
         <>
-            <Grid container spacing={2} direction="column" align="center" justify="center" alignItems="center">
+            <Grid container spacing={2} direction="column" align="center" justify="center" alignItems="center"
+                style={{ border: "solid 2px #2c387e", marginBottom: "15px" }}>
                 <Grid item xs={12}>
-                    <Typography variant="h2">{userName.first}'s Schedule</Typography>
+                    <Typography variant="h2">{props.user.firstName}'s Schedule</Typography>
                 </Grid >
                 <Grid item xs={12}>
                     <Typography variant="h4">{universityState.university.name}</Typography>
                 </Grid>
                 <Grid item xs={12}>
-                    <Typography variant="h5">{userSession.session} Session</Typography>
+                    <Typography variant="h5">{props.user.session} Session</Typography>
+                </Grid>
+            </Grid>
+            <Grid container spacing={2} direction="column" align="center" justify="center" alignItems="center">
+                <Grid item xs={12}>
+                    <Typography variant="h5">{moment().format('dddd, MMMM Do YYYY, h:mm a')}</Typography>
+                </Grid>
+                <Grid item xs={12}>
+                    <IconButton component={Link} to={"/calendar"}>
+                        <CalendarTodayIcon style={{ fontSize: "50px" }} color="primary" /></IconButton>
                 </Grid>
                 <Grid item xs={12}>
                     <AddClassForm
@@ -86,11 +85,10 @@ function Schedule(props) {
                     />
                 </Grid>
             </Grid>
-            <Grid container spacing={0} direction="row" align="center">
+            <Grid container spacing={0} direction="row" align="center" justify="center">
                 <Grid item xs={12}>
                     <ScheduleTimeline
                         scheduleState={scheduleState}
-                        userSession={userSession}
                     />
                 </Grid>
             </Grid >
