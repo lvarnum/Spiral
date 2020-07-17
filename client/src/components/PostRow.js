@@ -23,7 +23,7 @@ function PostRow(props) {
                 <TableCell><Typography variant="body1">{moment(post.date).format('MM/DD/YYYY, h:mm a')}</Typography></TableCell>
             </TableRow>
             <TableRow>
-                <TableCell style={{ paddingBottom: 0, paddingTop: 0, extAlign: "center", backgroundColor: "#2c387e", color: "white" }}
+                <TableCell style={{ paddingBottom: 0, paddingTop: 0, textAlign: "center", backgroundColor: "#2c387e", color: "white" }}
                     colSpan={6}>
                     <Collapse in={open} timeout="auto" unmountOnExit style={{ padding: "10px" }}>
                         <Typography variant="h6">Description: </Typography>

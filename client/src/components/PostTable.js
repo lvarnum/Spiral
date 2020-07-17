@@ -9,7 +9,7 @@ function PostTable(props) {
 
     return (
         <Paper>
-            <Grid container spacing={3}>
+            <Grid container spacing={3} style={{ marginBottom: "50px" }}>
                 <Grid item xs={12}>
                     <Table>
                         <TableHead style={{ backgroundColor: "#2c387e" }}>

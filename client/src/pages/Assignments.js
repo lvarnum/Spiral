@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { AddAssignmentForm, AssignmentTimeline } from "../components";
-import { Grid, Typography } from "@material-ui/core";
-import { useLocation } from 'react-router-dom'
+import { Grid, Typography, IconButton } from "@material-ui/core";
+import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
+import { useLocation } from 'react-router-dom';
 import API from "../utils/API";
+import { Link } from "react-router-dom";
+import moment from "moment";
 
 
 function Assignments(props) {
@@ -87,6 +90,13 @@ function Assignments(props) {
                 </Grid>
             </Grid>
             <Grid container spacing={2} direction="column" align="center" justify="center" alignItems="center">
+                <Grid item xs={12}>
+                    <Typography variant="h5">{moment().format('dddd, MMMM Do YYYY, h:mm a')}</Typography>
+                </Grid>
+                <Grid item xs={12}>
+                    <IconButton component={Link} to={"/calendar"}>
+                        <CalendarTodayIcon style={{ fontSize: "50px" }} color="primary" /></IconButton>
+                </Grid>
                 <Grid item xs={5}>
                     <AddAssignmentForm
                         formObject={formObject}

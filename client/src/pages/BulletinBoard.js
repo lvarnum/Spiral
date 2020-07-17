@@ -19,20 +19,40 @@ function BulletinBoard(props) {
     }, [])
 
     const loadPosts = () => {
-        API.Post.getAll({ $where: { university: props.user.university } }).then(res => {
-            setPosts(res.data);
+        API.Post.getAll().then(res => {
+            var filtered = res.data.filter(post => post.university === props.user.university);
+            setPosts(filtered);
         });
         API.University.getById(props.user.university)
             .then(res => setUniversity({ university: res.data.name }));
     }
 
     const loadFiltered = (type) => {
-        console.log(type)
         if (type === "academic") {
-            API.Post.getAll({ $where: { postType: "Study Group/Academic Inquiries" } })
+            API.Post.getAll()
                 .then(res => {
-                    console.log(res.data);
-                    setPosts(res.data);
+                    var filtered = res.data.filter(post =>
+                        post.university === props.user.university && post.postType === "Study Group/Academic Inquiries"
+                    );
+                    setPosts(filtered);
+                });
+        }
+        if (type === "clubs") {
+            API.Post.getAll()
+                .then(res => {
+                    var filtered = res.data.filter(post =>
+                        post.university === props.user.university && post.postType === "Club Info/Updates"
+                    );
+                    setPosts(filtered);
+                });
+        }
+        if (type === "events") {
+            API.Post.getAll()
+                .then(res => {
+                    var filtered = res.data.filter(post =>
+                        post.university === props.user.university && post.postType === "Events/Extra Curriculars"
+                    );
+                    setPosts(filtered);
                 });
         }
 
