@@ -1,14 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import {
-    Table, TableBody, TableHead, Paper, TableRow, Grid, TableCell, IconButton, Collapse, Box, Typography
+    Table, TableBody, TableHead, Paper, TableRow, Grid, TableCell, Typography
 } from '@material-ui/core';
-import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
-import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
-import moment from "moment";
+import PostRow from "./PostRow";
 
 function PostTable(props) {
     const { posts } = props;
-    const [open, setOpen] = useState(false);
 
     return (
         <Paper>
@@ -17,41 +14,23 @@ function PostTable(props) {
                     <Table>
                         <TableHead style={{ backgroundColor: "#2c387e" }}>
                             <TableRow>
-                                <TableCell>
-                                    <IconButton aria-label="expand row" size="small" style={{ color: "white" }} disabled />
-                                </TableCell>
-                                <TableCell style={{ color: "white" }}>Title</TableCell>
-                                <TableCell style={{ color: "white" }}>Posted</TableCell>
+                                <TableCell />
+                                <TableCell style={{ color: "white" }}><Typography variant="h6">Post Type</Typography></TableCell>
+                                <TableCell style={{ color: "white" }}><Typography variant="h6">Title</Typography></TableCell>
+                                <TableCell style={{ color: "white" }}><Typography variant="h6">Post Date</Typography></TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
                             {posts.length > 0 &&
                                 posts.map(post => (
-                                    <>
-                                        <TableRow key={post._id}>
-                                            <TableCell>
-                                                <IconButton aria-label="expand row" size="small" onClick={() => setOpen(!open)}>
-                                                    {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
-                                                </IconButton>
-                                            </TableCell>
-                                            <TableCell component="th" scope="row">{post.title}</TableCell>
-                                            <TableCell align="right">{moment(post.date).format('MM/DD/YYYY, h:mm a')}</TableCell>
-                                        </TableRow>
-                                        <Collapse in={open} timeout="auto" unmountOnExit>
-                                            <Box margin={1}>
-                                                <Typography variant="h6" gutterBottom component="div">
-                                                    Post Info
-                                      </Typography>
-                                            </Box>
-                                        </Collapse>
-                                    </>
+                                    <PostRow post={post} key={post._id} />
                                 ))
                             }
                         </TableBody>
                     </Table>
                 </Grid>
             </Grid>
-        </Paper>
+        </Paper >
     )
 }
 

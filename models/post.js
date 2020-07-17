@@ -24,6 +24,10 @@ const postSchema = new Schema(
     },
     postType: {
       type: String
+    },
+    university: {
+      type: Schema.Types.ObjectId,
+      ref: 'University'
     }
   }
 );
