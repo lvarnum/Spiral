@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import {
-    Button, Grid, Paper, Container, TextField, Typography, FormControl, FormLabel, RadioGroup, FormControlLabel,
+    Button, Grid, Paper, TextField, Typography, FormControl, FormLabel, RadioGroup, FormControlLabel,
     Radio, Dialog, DialogActions, DialogContent, IconButton
 } from '@material-ui/core';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
@@ -20,11 +20,9 @@ function PostForm(props) {
 
     return (
         <>
+            <IconButton aria-label="add" onClick={handleClickOpen}>
+                <AddCircleIcon style={{ fontSize: "65px" }} color="secondary" /></IconButton>
             <Paper>
-                <IconButton aria-label="add" size="medium" color="primary" onClick={handleClickOpen}>
-                    <AddCircleIcon size="large" color="secondary" style={{ marginRight: "5px" }} />
-                     Add Post
-                    </IconButton>
                 <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
                     <DialogContent>
                         <form>

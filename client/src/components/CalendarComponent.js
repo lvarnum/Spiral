@@ -41,7 +41,7 @@ function CalendarComponent(props) {
     return (
         <FullCalendar
             plugins={[dayGridPlugin, timeGridPlugin]}
-            initialView="dayGridMonth"
+            initialView="timeGridDay"
             headerToolbar={{
                 left: "prev,next",
                 center: "title",

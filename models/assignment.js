@@ -9,7 +9,7 @@ const assignmentSchema = new Schema(
             trim: true
         },
         due: {
-            type: Date
+            type: String
         },
         notes: {
             type: String

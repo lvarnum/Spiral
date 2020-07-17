@@ -17,11 +17,9 @@ function AddAssignmentForm(props) {
 
     return (
         <>
+            <IconButton aria-label="add" onClick={handleClickOpen}>
+                <AddCircleIcon color="secondary" style={{ fontSize: "65px" }} /></IconButton>
             <Paper>
-                <IconButton aria-label="add" size="medium" color="primary" onClick={handleClickOpen}>
-                    <AddCircleIcon size="large" color="secondary" style={{ marginRight: "5px" }} />
-                Add Assignment
-                </IconButton>
                 <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
                     <DialogContent>
                         <form>

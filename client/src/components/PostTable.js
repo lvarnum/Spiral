@@ -1,38 +1,56 @@
-import React from "react";
-import { Table, TableBody, TableHead, Paper, TableRow, Container, Grid, TableCell } from '@material-ui/core';
+import React, { useState } from "react";
+import {
+    Table, TableBody, TableHead, Paper, TableRow, Grid, TableCell, IconButton, Collapse, Box, Typography
+} from '@material-ui/core';
+import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
+import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
+import moment from "moment";
 
 function PostTable(props) {
     const { posts } = props;
+    const [open, setOpen] = useState(false);
+
     return (
         <Paper>
-            <Container maxWidth="sm">
-                <Grid container spacing={3}>
-                    <Grid item xs={12}>
-                        <Table>
-                            <TableHead>
-                                <TableRow>
-                                    <TableCell>User</TableCell>
-                                    <TableCell>Title</TableCell>
-                                    <TableCell>Body</TableCell>
-                                    <TableCell>Timestamp</TableCell>
-                                </TableRow>
-                            </TableHead>
-                            <TableBody>
-                                {posts.length > 0 &&
-                                    posts.map(post => (
+            <Grid container spacing={3}>
+                <Grid item xs={12}>
+                    <Table>
+                        <TableHead style={{ backgroundColor: "#2c387e" }}>
+                            <TableRow>
+                                <TableCell>
+                                    <IconButton aria-label="expand row" size="small" style={{ color: "white" }} disabled />
+                                </TableCell>
+                                <TableCell style={{ color: "white" }}>Title</TableCell>
+                                <TableCell style={{ color: "white" }}>Posted</TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {posts.length > 0 &&
+                                posts.map(post => (
+                                    <>
                                         <TableRow key={post._id}>
-                                            <TableCell>{post.user.email}</TableCell>
-                                            <TableCell>{post.title}</TableCell>
-                                            <TableCell>{post.body}</TableCell>
-                                            <TableCell>{post.date}</TableCell>
+                                            <TableCell>
+                                                <IconButton aria-label="expand row" size="small" onClick={() => setOpen(!open)}>
+                                                    {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+                                                </IconButton>
+                                            </TableCell>
+                                            <TableCell component="th" scope="row">{post.title}</TableCell>
+                                            <TableCell align="right">{moment(post.date).format('MM/DD/YYYY, h:mm a')}</TableCell>
                                         </TableRow>
-                                    ))
-                                }
-                            </TableBody>
-                        </Table>
-                    </Grid>
+                                        <Collapse in={open} timeout="auto" unmountOnExit>
+                                            <Box margin={1}>
+                                                <Typography variant="h6" gutterBottom component="div">
+                                                    Post Info
+                                      </Typography>
+                                            </Box>
+                                        </Collapse>
+                                    </>
+                                ))
+                            }
+                        </TableBody>
+                    </Table>
                 </Grid>
-            </Container>
+            </Grid>
         </Paper>
     )
 }

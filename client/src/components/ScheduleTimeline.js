@@ -10,7 +10,7 @@ import moment from "moment";
 import { Link } from "react-router-dom";
 
 function ScheduleTimeline(props) {
-    const { scheduleState, userSession } = props;
+    const { scheduleState } = props;
     scheduleState.schedule.sort(function (a, b) {
         if (a.startTime > b.startTime) {
             return 1;
@@ -28,7 +28,7 @@ function ScheduleTimeline(props) {
                     <TimelineOppositeContent style={{ flex: "0 0 15%" }}>
                         {item.startTime !== '' &&
                             <Typography>
-                                {moment(item.startTime, 'HH:mm').format('hh:mm a')} - {moment(item.endTime, 'HH:mm').format('hh:mm a')}
+                                {moment(item.startTime, 'HH:mm').format('h:mm a')} - {moment(item.endTime, 'HH:mm').format('h:mm a')}
                             </Typography>
                         }
                         {item.startTime === '' &&
@@ -52,7 +52,7 @@ function ScheduleTimeline(props) {
                             <Typography><LocationOnIcon color="secondary" style={{ marginRight: "5px" }} />
                                 {item.location}</Typography>
                             <Button variant="contained" component={Link}
-                                to={{ pathname: "/assignments", course: item._id, session: userSession.session }}
+                                to={{ pathname: "/assignments", course: item._id }}
                                 style={{ marginTop: "10px", backgroundColor: "white" }}>
                                 View Assignments</Button>
                         </Paper>

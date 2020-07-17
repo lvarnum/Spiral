@@ -83,7 +83,7 @@ function Assignments(props) {
                     <Typography variant="h3">{courseState.course}</Typography>
                 </Grid>
                 <Grid item xs={5}>
-                    <Typography variant="h5">{location.session} Session</Typography>
+                    <Typography variant="h5">{props.user.session} Session</Typography>
                 </Grid>
             </Grid>
             <Grid container spacing={2} direction="column" align="center" justify="center" alignItems="center">
