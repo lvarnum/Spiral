@@ -2,6 +2,7 @@ import React from "react";
 import { Container, Paper, Typography, Grid, Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import "../styles/Home.css";
+import Logo from "../utils/images/SpiralLogo.png"
 
 function Home(props) {
     const { user } = props;
@@ -16,7 +17,7 @@ function Home(props) {
                     <Grid container spacing={3}>
                         <Grid item xs={12}>
                             <Typography variant="h2" align="center" gutterBottom>
-                                Spiral
+                            <img className="logo" src={Logo} alt="Logo" />
                             </Typography>
                             <Typography variant="h4" align="center" gutterBottom>
                                 Student class organizer, assignment planner, and university community forum application.
