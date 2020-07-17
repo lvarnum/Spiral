@@ -4,8 +4,8 @@ import axios from "axios";
  * Private function to get all of an entity
  * @param {String} entity API Path/Entity 
  */
-function _getAll(entity) {
-    return axios.get(`/api/${entity}/`);
+function _getAll(entity, data) {
+    return axios.get(`/api/${entity}/`, data);
 }
 
 /**
@@ -62,8 +62,8 @@ export default {
         }
     },
     Post: {
-        getAll: function () {
-            return _getAll("posts");
+        getAll: function (data) {
+            return _getAll("posts", data);
         },
         getById: function (id) {
             return _getOne("posts", id);
