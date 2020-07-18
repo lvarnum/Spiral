@@ -11,7 +11,7 @@ function UserInfo(props) {
 
     return (
         <Container maxWidth="sm">
-            <Paper style={{ padding: "15px", width: "100%", border: "solid 2px #2c387e" }}>
+            <Paper style={{ padding: "15px", border: "solid 2px #2c387e" }}>
                 <Grid container spacing={2} direction="column" align="center" justify="center" alignItems="center">
                     <Grid item xs={12}>
                         <Typography variant="h4">User Info</Typography>
@@ -52,7 +52,7 @@ function UserInfo(props) {
                     </Grid>
                 </Grid>
             </Paper>
-            <Paper style={{ padding: "15px", width: "100%", marginTop: "30px", marginBottom: "30px", border: "solid 2px #2c387e" }}>
+            <Paper style={{ padding: "15px", marginTop: "30px", marginBottom: "30px", border: "solid 2px #2c387e" }}>
                 <Grid container spacing={2} direction="column" align="center" justify="center" alignItems="center">
                     <Grid item xs={12}>
                         <Typography variant="h4">Classes</Typography>
@@ -76,7 +76,7 @@ function UserInfo(props) {
                     </Grid>
                 </Grid>
             </Paper>
-            <Paper style={{ padding: "15px", width: "100%", border: "solid 2px #2c387e" }}>
+            <Paper style={{ padding: "15px", border: "solid 2px #2c387e" }}>
                 <Grid container spacing={2} direction="column" align="center" justify="center" alignItems="center">
                     <Grid item xs={12}>
                         <Typography variant="h4">Posts</Typography>
