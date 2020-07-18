@@ -24,7 +24,7 @@ function AddAssignmentForm(props) {
                     <DialogContent>
                         <form>
                             <Grid container spacing={3}>
-                                <Grid item xs={12}>
+                                <Grid item xs={12} style={{ backgroundColor: "#2c387e", color: "white", width: "100%", marginBottom:"10px", textAlign: "center" }}>
                                     <Typography variant="h4" gutterBottom>
                                         Add Assignment
                                 </Typography>
