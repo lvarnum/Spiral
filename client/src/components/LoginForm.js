@@ -6,11 +6,11 @@ function LoginForm(props) {
 
     return (
         <>
-            <Paper>
+            <Paper style={{ padding: "30px", border: "solid 2px #2c387e", marginTop: "120px" }}>
                 <Container maxWidth="sm">
                     <form>
-                        <Grid container spacing={3}>
-                            <Grid item xs={12}>
+                        <Grid container spacing={3} direction="column" align="center" justify="center" alignItems="center">
+                            <Grid item xs={12} style={{ backgroundColor: "#2c387e", color: "white", width: "100%" }}>
                                 <Typography variant="h4" gutterBottom>
                                     Login
                                 </Typography>
@@ -41,6 +41,9 @@ function LoginForm(props) {
                                 <Button variant="contained" color="secondary" type="submit" onClick={handleFormSubmit}>
                                     Login
                                 </Button>
+                            </Grid>
+                            <Grid item xs={12}>
+                                <a href="/signup" style={{ textDecoration: "none", color: "#2c387e" }}>Or Signup</a>
                             </Grid>
                         </Grid>
                     </form>

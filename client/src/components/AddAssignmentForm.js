@@ -31,6 +31,7 @@ function AddAssignmentForm(props) {
                                 </Grid>
                                 <Grid item xs={12}>
                                     <TextField
+                                        required
                                         label="Assignment Name"
                                         value={formObject.name}
                                         name="name"
@@ -47,10 +48,13 @@ function AddAssignmentForm(props) {
                                         onChange={handleInputChange}
                                         as="input"
                                         type="text"
+                                        multiline
+                                        rows={4}
                                     />
                                 </Grid>
                                 <Grid item xs={12}>
                                     <TextField
+                                        required
                                         id="date"
                                         label="Due Date"
                                         name="due"

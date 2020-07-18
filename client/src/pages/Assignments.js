@@ -91,13 +91,11 @@ function Assignments(props) {
             </Grid>
             <Grid container spacing={2} direction="column" align="center" justify="center" alignItems="center">
                 <Grid item xs={12}>
-                    <Typography variant="h5">{moment().format('dddd, MMMM Do YYYY, h:mm a')}</Typography>
-                </Grid>
-                <Grid item xs={12}>
-                    <IconButton component={Link} to={"/calendar"}>
-                        <CalendarTodayIcon style={{ fontSize: "50px" }} color="primary" /></IconButton>
+                    <Typography variant="h5">{moment().format('dddd, MMMM Do YYYY')}</Typography>
                 </Grid>
                 <Grid item xs={5}>
+                    <IconButton component={Link} to={"/calendar"}>
+                        <CalendarTodayIcon style={{ fontSize: "50px" }} color="primary" /></IconButton>
                     <AddAssignmentForm
                         formObject={formObject}
                         handleInputChange={handleInputChange}
@@ -106,7 +104,7 @@ function Assignments(props) {
                 </Grid>
             </Grid>
             <Grid container spacing={0} justify="center" direction="row" align="center">
-                <Grid item xs={9}>
+                <Grid item xs={12}>
                     <AssignmentTimeline
                         assignmentState={assignmentState}
                         handleCheck={handleCheck}

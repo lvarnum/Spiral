@@ -6,47 +6,34 @@ import Logo from "../utils/images/SpiralLogo.png"
 
 function Home(props) {
     const { user } = props;
-    const styles = {
-        buttons: {
-            textAlign: "center"
-        }
-    };
+
     return (
-            <Paper>
-                <Container>
-                    <Grid container spacing={3}>
-                        <Grid item xs={12}>
-                            <Typography variant="h2" align="center" gutterBottom>
-                            <img className="logo" src={Logo} alt="Logo" />
+        <Paper style={{ padding: "30px", border: "solid 2px #2c387e", marginTop: "100px" }}>
+            <Container maxWidth="sm">
+                <Grid container spacing={3} direction="column" align="center" justify="center" alignItems="center">
+                    <Grid item xs={12}>
+                        <Typography variant="h2" align="center" gutterBottom>
+                            <img className="logo" src={Logo} alt="Logo" style={{ width: "100%" }} />
+                        </Typography>
+                        <Typography variant="h4" align="center" gutterBottom style={{ fontFamily: 'Varta, sans-serif' }}>
+                            - A Student Organizer -
                             </Typography>
-                            <Typography variant="h4" align="center" gutterBottom>
-                                Student class organizer, assignment planner, and university community forum application.
-                            </Typography>
-                        </Grid>
                     </Grid>
 
-                    {user.email ?
-                        <>
 
-                        </>
-                        :
-                        <>
-                        <div id="btnRow" style={styles.buttons}>
-                            <Button style={{marginRight:'1em', marginBottom:"1em"}}component={Link} to="/login" variant="contained" color="secondary" type="submit">
-                                Login
+                    <Grid item xs={12}>
+                        <Button component={Link} to="/login" variant="contained" color="secondary" type="submit">
+                            Login
                         </Button>
-
-                            <Button style={{marginBottom:"1em"}} component={Link} to="/signup" variant="contained" color="secondary" type="submit">
-                                Signup
+                    </Grid>
+                    <Grid item xs={12}>
+                        <Button component={Link} to="/signup" variant="contained" color="secondary" type="submit">
+                            Signup
                         </Button>
-                        </div>
-                        </>
-                    }
-
-
-
-                </Container>
-            </Paper>
+                    </Grid>
+                </Grid>
+            </Container >
+        </Paper >
     )
 }
 

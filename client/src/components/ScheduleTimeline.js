@@ -1,6 +1,6 @@
 import React from "react";
 import {
-    Timeline, TimelineItem, TimelineSeparator, TimelineConnector, TimelineContent, TimelineDot, TimelineOppositeContent
+    Timeline, TimelineItem, TimelineSeparator, TimelineConnector, TimelineContent, TimelineDot
 } from '@material-ui/lab';
 import LabelImportantIcon from '@material-ui/icons/LabelImportant';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
@@ -24,29 +24,22 @@ function ScheduleTimeline(props) {
     return (
         <Timeline >
             {scheduleState.schedule.map(item => (
-                <TimelineItem key={item._id} >
-                    <TimelineOppositeContent style={{ flex: "0 0 15%" }}>
-                        {item.startTime !== '' &&
-                            <Typography>
-                                {moment(item.startTime, 'HH:mm').format('h:mm a')} - {moment(item.endTime, 'HH:mm').format('h:mm a')}
-                            </Typography>
-                        }
-                        {item.startTime === '' &&
-                            <Typography>
-                                Class Taken Online
-                            </Typography>
-                        }
-                    </TimelineOppositeContent>
+                <TimelineItem key={item._id}>
                     <TimelineSeparator>
                         <TimelineDot>
                             <LabelImportantIcon color="primary" />
                         </TimelineDot>
                         <TimelineConnector />
                     </TimelineSeparator>
-                    <TimelineContent >
+                    <TimelineContent style={{ flex: '0 1 100%' }}>
                         <Paper elevation={3} style={{ padding: "10px", backgroundColor: "#2c387e", color: "white" }}>
                             <Typography variant="h5" component="h1">{item.course}</Typography>
                             <Typography variant="h6" component="h1">{item.days.join(', ')}</Typography>
+                            {item.startTime !== '' &&
+                                <Typography variant="h6">
+                                    {moment(item.startTime, 'HH:mm').format('h:mm a')} - {moment(item.endTime, 'HH:mm').format('h:mm a')}
+                                </Typography>
+                            }
                             <Typography><PersonIcon color="secondary" style={{ marginRight: "5px" }} />
                                 {item.professor}</Typography>
                             <Typography><LocationOnIcon color="secondary" style={{ marginRight: "5px" }} />
