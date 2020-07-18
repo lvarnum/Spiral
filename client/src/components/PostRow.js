@@ -26,11 +26,11 @@ function PostRow(props) {
                 <TableCell style={{ paddingBottom: 0, paddingTop: 0, textAlign: "center", backgroundColor: "#2c387e", color: "white" }}
                     colSpan={6}>
                     <Collapse in={open} timeout="auto" unmountOnExit style={{ padding: "10px" }}>
-                        <Typography variant="h6">Description: </Typography>
-                        <Typography variant="body1">{post.body}</Typography>
-                        <Typography variant="h6">Posted By: </Typography>
-                        <Typography variant="body1"><b>Name: </b>{post.user.firstName} {post.user.lastName}</Typography>
-                        <Typography variant="body1"><b>Email: </b>{post.user.email}</Typography>
+                        <Typography variant="h6" style={{ fontFamily: 'Varta, sans-serif' }}>Description: </Typography>
+                        <Typography variant="body1" style={{ fontFamily: 'Varta, sans-serif' }}>{post.body}</Typography>
+                        <Typography variant="h6" style={{ fontFamily: 'Varta, sans-serif' }}>Posted By: </Typography>
+                        <Typography variant="body1" style={{ fontFamily: 'Varta, sans-serif' }}><b>Name: </b>{post.user.firstName} {post.user.lastName}</Typography>
+                        <Typography variant="body1" style={{ fontFamily: 'Varta, sans-serif' }}><b>Email: </b>{post.user.email}</Typography>
                     </Collapse>
                 </TableCell>
             </TableRow>

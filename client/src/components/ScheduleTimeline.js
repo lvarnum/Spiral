@@ -33,10 +33,10 @@ function ScheduleTimeline(props) {
                     </TimelineSeparator>
                     <TimelineContent style={{ flex: '0 1 100%' }}>
                         <Paper elevation={3} style={{ padding: "10px", backgroundColor: "#2c387e", color: "white" }}>
-                            <Typography variant="h5" component="h1">{item.course}</Typography>
-                            <Typography variant="h6" component="h1">{item.days.join(', ')}</Typography>
+                            <Typography variant="h5" component="h1" style={{ fontFamily: 'Varta, sans-serif' }}>{item.course}</Typography>
+                            <Typography variant="h6" component="h1" style={{ fontFamily: 'Varta, sans-serif' }}>{item.days.join(', ')}</Typography>
                             {item.startTime !== '' &&
-                                <Typography variant="h6">
+                                <Typography variant="h6" style={{ fontFamily: 'Varta, sans-serif' }}>
                                     {moment(item.startTime, 'HH:mm').format('h:mm a')} - {moment(item.endTime, 'HH:mm').format('h:mm a')}
                                 </Typography>
                             }
@@ -46,7 +46,7 @@ function ScheduleTimeline(props) {
                                 {item.location}</Typography>
                             <Button variant="contained" component={Link}
                                 to={{ pathname: "/assignments", course: item._id }}
-                                style={{ marginTop: "10px", backgroundColor: "white" }}>
+                                style={{ marginTop: "10px", backgroundColor: "white", fontFamily: 'Varta, sans-serif'}}>
                                 View Assignments</Button>
                         </Paper>
                     </TimelineContent>

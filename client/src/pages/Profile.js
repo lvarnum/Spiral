@@ -79,7 +79,7 @@ function Profile(props) {
             <Grid container spacing={2} direction="column" align="center" justify="center" alignItems="center"
                 style={{ border: "solid 2px #2c387e", marginBottom: "30px" }}>
                 <Grid item xs={12}>
-                    <Typography variant="h3">{props.user.firstName}'s Profile</Typography>
+                    <Typography variant="h3" style={{ fontFamily: 'Varta, sans-serif' }}>{props.user.firstName}'s Profile</Typography>
                 </Grid >
             </Grid>
             <UserInfo

@@ -26,9 +26,9 @@ function PostTable(props) {
                             <TableHead style={{ backgroundColor: "#2c387e" }}>
                                 <TableRow>
                                     <TableCell />
-                                    <TableCell style={{ color: "white" }}><Typography variant="h6">Post Type</Typography></TableCell>
-                                    <TableCell style={{ color: "white" }}><Typography variant="h6">Title</Typography></TableCell>
-                                    <TableCell style={{ color: "white" }}><Typography variant="h6">Post Date</Typography></TableCell>
+                                    <TableCell style={{ color: "white" }}><Typography variant="h6" style={{ fontFamily: 'Varta, sans-serif' }}>Post Type</Typography></TableCell>
+                                    <TableCell style={{ color: "white" }}><Typography variant="h6" style={{ fontFamily: 'Varta, sans-serif' }}>Title</Typography></TableCell>
+                                    <TableCell style={{ color: "white" }}><Typography variant="h6" style={{ fontFamily: 'Varta, sans-serif' }}>Post Date</Typography></TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>

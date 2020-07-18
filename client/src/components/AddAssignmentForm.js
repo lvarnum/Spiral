@@ -25,7 +25,7 @@ function AddAssignmentForm(props) {
                         <form>
                             <Grid container spacing={3}>
                                 <Grid item xs={12}>
-                                    <Typography variant="h4" gutterBottom>
+                                    <Typography variant="h4" gutterBottom style={{ fontFamily: 'Varta, sans-serif' }}>
                                         Add Assignment
                                 </Typography>
                                 </Grid>
@@ -38,6 +38,7 @@ function AddAssignmentForm(props) {
                                         onChange={handleInputChange}
                                         as="input"
                                         type="text"
+                                        style={{ fontFamily: 'Varta, sans-serif' }}
                                     />
                                 </Grid>
                                 <Grid item xs={12}>
@@ -50,6 +51,7 @@ function AddAssignmentForm(props) {
                                         type="text"
                                         multiline
                                         rows={4}
+                                        style={{ fontFamily: 'Varta, sans-serif' }}
                                     />
                                 </Grid>
                                 <Grid item xs={12}>
@@ -66,14 +68,14 @@ function AddAssignmentForm(props) {
                                         }}
                                     />
                                 </Grid>
-                                <Button variant="contained" color="secondary" type="submit" onClick={handleFormSubmit}>
+                                <Button variant="contained" color="secondary" type="submit" onClick={handleFormSubmit} style={{ fontFamily: 'Varta, sans-serif' }}>
                                     Add Assignment
                                 </Button>
                             </Grid>
                         </form>
                     </DialogContent>
                     <DialogActions>
-                        <Button onClick={handleClose} color="primary">
+                        <Button onClick={handleClose} color="primary" style={{ fontFamily: 'Varta, sans-serif' }}>
                             Close
                         </Button>
                     </DialogActions>

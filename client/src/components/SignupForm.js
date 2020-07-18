@@ -50,7 +50,7 @@ function SignupForm(props) {
                     <form>
                         <Grid container spacing={3} direction="column" align="center" justify="center" alignItems="center">
                             <Grid item xs={12} style={{ backgroundColor: "#2c387e", color: "white", width: "100%" }}>
-                                <Typography variant="h4" gutterBottom>
+                                <Typography variant="h4" gutterBottom style={{ fontFamily: 'Varta, sans-serif' }}>
                                     Signup
                                 </Typography>
                             </Grid>
@@ -64,6 +64,7 @@ function SignupForm(props) {
                                     as="input"
                                     type="text"
                                     placeholder="Enter your First Name"
+                                    style={{ fontFamily: 'Varta, sans-serif' }}
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -75,6 +76,7 @@ function SignupForm(props) {
                                     as="input"
                                     type="text"
                                     placeholder="Enter your Last Name"
+                                    style={{ fontFamily: 'Varta, sans-serif' }}
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -87,6 +89,7 @@ function SignupForm(props) {
                                     as="input"
                                     type="email"
                                     placeholder="Enter your Email"
+                                    style={{ fontFamily: 'Varta, sans-serif' }}
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -99,22 +102,24 @@ function SignupForm(props) {
                                     as="input"
                                     type="password"
                                     placeholder="Enter your password"
+                                    style={{ fontFamily: 'Varta, sans-serif' }}
                                 />
                             </Grid>
                             <Grid item xs={12}>
                                 <FormControl>
-                                    <InputLabel>Session</InputLabel>
+                                    <InputLabel style={{ fontFamily: 'Varta, sans-serif' }}>Session</InputLabel>
                                     <Select
                                         required
                                         name="session"
                                         id="session-select"
                                         style={{ width: 200 }}
                                         onChange={handleInputChange}
+                                        style={{ fontFamily: 'Varta, sans-serif' }}
                                     >
-                                        <MenuItem value="Spring">Spring</MenuItem>
-                                        <MenuItem value="Summer">Summer</MenuItem>
-                                        <MenuItem value="Fall">Fall</MenuItem>
-                                        <MenuItem value="Winter">Winter</MenuItem>
+                                        <MenuItem value="Spring" style={{ fontFamily: 'Varta, sans-serif' }}>Spring</MenuItem>
+                                        <MenuItem value="Summer" style={{ fontFamily: 'Varta, sans-serif' }}>Summer</MenuItem>
+                                        <MenuItem value="Fall" style={{ fontFamily: 'Varta, sans-serif' }}>Fall</MenuItem>
+                                        <MenuItem value="Winter" style={{ fontFamily: 'Varta, sans-serif' }}>Winter</MenuItem>
                                     </Select>
                                 </FormControl>
                             </Grid>
@@ -177,15 +182,15 @@ function SignupForm(props) {
                                         style={{ width: 300 }}
                                         freeSolo
                                         renderInput={(params) => (
-                                            <TextField {...params} label="University" variant="outlined" style={{ textAlign: "left" }} />
+                                            <TextField {...params} label="University" variant="outlined" style={{ textAlign: "left" }} style={{ fontFamily: 'Varta, sans-serif' }} />
                                         )}
                                     />
                                     <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
                                         <form onSubmit={handleSubmit}>
-                                            <DialogTitle id="form-dialog-title" style={{ textAlign: "center" }}>
+                                            <DialogTitle id="form-dialog-title" style={{ textAlign: "center" }} style={{ fontFamily: 'Varta, sans-serif' }}>
                                                 Add a new University</DialogTitle>
                                             <DialogContent>
-                                                <DialogContentText>
+                                                <DialogContentText style={{ fontFamily: 'Varta, sans-serif' }}>
                                                     Can't find your University? Please, add it!
                                                 </DialogContentText>
                                                 <TextField
@@ -198,11 +203,13 @@ function SignupForm(props) {
                                                     label="Name"
                                                     type="text"
                                                     style={{ marginBottom: "15px" }}
+                                                    style={{ fontFamily: 'Varta, sans-serif' }}
                                                 />
                                                 <Autocomplete
                                                     id="state"
                                                     margin="dense"
                                                     inputValue={inputValue}
+                                                    style={{ fontFamily: 'Varta, sans-serif' }}
                                                     options={[
                                                         { name: "AL" },
                                                         { name: "AK" },
@@ -271,14 +278,14 @@ function SignupForm(props) {
                                                     }}
                                                     getOptionLabel={(option) => option.name}
                                                     style={{ width: 130 }}
-                                                    renderInput={(params) => <TextField {...params} label="State" variant="outlined" />}
+                                                    renderInput={(params) => <TextField {...params} label="State" variant="outlined" style={{ fontFamily: 'Varta, sans-serif' }}/>}
                                                 />
                                             </DialogContent>
                                             <DialogActions>
-                                                <Button onClick={handleClose} color="primary">
+                                                <Button onClick={handleClose} color="primary" style={{ fontFamily: 'Varta, sans-serif' }}>
                                                     Cancel
                                                 </Button>
-                                                <Button type="submit" color="primary">
+                                                <Button type="submit" color="primary" style={{ fontFamily: 'Varta, sans-serif' }}>
                                                     Add
                                                 </Button>
                                             </DialogActions>
@@ -287,12 +294,12 @@ function SignupForm(props) {
                                 </>
                             </Grid>
                             <Grid item xs={12}>
-                                <Button variant="contained" color="secondary" type="submit" onClick={handleFormSubmit}>
+                                <Button variant="contained" color="secondary" type="submit" onClick={handleFormSubmit} style={{ fontFamily: 'Varta, sans-serif' }}>
                                     Signup
                                 </Button>
                             </Grid>
                             <Grid item xs={12}>
-                                <a href="/login" style={{ textDecoration: "none", color: "#2c387e" }}>Or Login</a>
+                                <a href="/login" style={{ textDecoration: "none", color: "#2c387e" }} style={{ fontFamily: 'Varta, sans-serif' }}>Or Login</a>
                             </Grid>
                         </Grid>
                     </form>

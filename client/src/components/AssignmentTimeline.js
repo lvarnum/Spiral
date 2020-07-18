@@ -34,18 +34,18 @@ function AssignmentTimeline(props) {
                         <Paper elevation={3} style={{ padding: "10px", backgroundColor: "#2c387e", color: "white" }}>
                             {item.done === false &&
                                 <>
-                                    <Typography variant="h6" component="h1">{item.name}</Typography>
-                                    <Typography>
+                                    <Typography variant="h6" component="h1" style={{ fontFamily: 'Varta, sans-serif' }}>{item.name}</Typography>
+                                    <Typography style={{ fontFamily: 'Varta, sans-serif' }}>
                                         Due: {moment(item.due).format('MM/DD/YYYY')}
                                     </Typography>
-                                    <Typography><b>Notes: </b></Typography>
+                                    <Typography style={{ fontFamily: 'Varta, sans-serif' }}><b>Notes: </b></Typography>
                                     <Typography>{item.notes}</Typography>
                                     <IconButton aria-label="check"
-                                        style={{ backgroundColor: "white", marginTop: "10px", marginRight: "10px" }}
+                                        style={{ backgroundColor: "white", marginTop: "10px", marginRight: "10px", fontFamily: 'Varta, sans-serif' }}
                                         onClick={handleCheck.bind(this, item._id)}>
                                         <CheckIcon style={{ color: "green" }} />
                                     </IconButton>
-                                    <IconButton aria-label="delete" style={{ backgroundColor: "white", marginTop: "10px" }}
+                                    <IconButton aria-label="delete" style={{ backgroundColor: "white", marginTop: "10px", fontFamily: 'Varta, sans-serif'}}                                    
                                         onClick={handleDelete.bind(this, item._id)}>
                                         <DeleteIcon style={{ color: "red" }} />
                                     </IconButton>
@@ -53,13 +53,13 @@ function AssignmentTimeline(props) {
                             }
                             {item.done === true &&
                                 <>
-                                    <Typography variant="h5" component="h1" style={{ textDecoration: "line-through" }}>{item.name}</Typography>
-                                    <Typography style={{ textDecoration: "line-through" }}>
+                                    <Typography variant="h5" component="h1" style={{ textDecoration: "line-through", fontFamily: 'Varta, sans-serif'}}>{item.name}</Typography>
+                                    <Typography style={{ textDecoration: "line-through", fontFamily: 'Varta, sans-serif'}}>
                                         Due: {moment(item.due).format('MM/DD/YYYY')}
                                     </Typography>
-                                    <Typography style={{ textDecoration: "line-through" }}><b>Notes: </b></Typography>
-                                    <Typography style={{ textDecoration: "line-through" }}>{item.notes}</Typography>
-                                    <IconButton aria-label="delete" style={{ backgroundColor: "white", marginTop: "10px" }}
+                                    <Typography style={{ textDecoration: "line-through", fontFamily: 'Varta, sans-serif'}}><b>Notes: </b></Typography>
+                                    <Typography style={{ textDecoration: "line-through", fontFamily: 'Varta, sans-serif'}}>{item.notes}</Typography>
+                                    <IconButton aria-label="delete" style={{ backgroundColor: "white", marginTop: "10px", fontFamily: 'Varta, sans-serif'}}
                                         onClick={handleDelete.bind(this, item._id)}>
                                         <DeleteIcon style={{ color: "red" }} />
                                     </IconButton>

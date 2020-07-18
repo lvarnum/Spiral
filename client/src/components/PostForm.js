@@ -28,16 +28,16 @@ function PostForm(props) {
                         <form>
                             <Grid container spacing={3}>
                                 <Grid item xs={12}>
-                                    <Typography variant="h6">
+                                    <Typography variant="h6" style={{ fontFamily: 'Varta, sans-serif' }}>
                                         New Post
                                 </Typography>
                                 </Grid>
                                 <FormControl component="fieldset">
-                                    <FormLabel component="legend">Post Type</FormLabel>
+                                    <FormLabel component="legend" style={{ fontFamily: 'Varta, sans-serif' }}>Post Type</FormLabel>
                                     <RadioGroup defaultValue="Study Group/Academic Inquiries" aria-label="postType" name="type" onChange={handleInputChange} required>
-                                        <FormControlLabel value="Study Group/Academic Inquiries" control={<Radio />} label="Study Group/Academic Inquiries" />
-                                        <FormControlLabel value="Club Info/Updates" control={<Radio />} label="Club Info/Updates" />
-                                        <FormControlLabel value="Events/Extra Curriculars" control={<Radio />} label="Events/Extra Curriculars" />
+                                        <FormControlLabel value="Study Group/Academic Inquiries" control={<Radio />} label="Study Group/Academic Inquiries" style={{ fontFamily: 'Varta, sans-serif' }}/>
+                                        <FormControlLabel value="Club Info/Updates" control={<Radio />} label="Club Info/Updates" style={{ fontFamily: 'Varta, sans-serif' }}/>
+                                        <FormControlLabel value="Events/Extra Curriculars" control={<Radio />} label="Events/Extra Curriculars" style={{ fontFamily: 'Varta, sans-serif' }}/>
                                     </RadioGroup>
                                 </FormControl>
                                 <Grid item xs={12}>
@@ -46,6 +46,7 @@ function PostForm(props) {
                                         label="Post Title"
                                         value={formObject.title}
                                         name="title"
+                                        style={{ fontFamily: 'Varta, sans-serif' }}
                                         onChange={handleInputChange}
                                     />
                                 </Grid>
@@ -54,13 +55,14 @@ function PostForm(props) {
                                         label="Description"
                                         value={formObject.body}
                                         name="body"
+                                        style={{ fontFamily: 'Varta, sans-serif' }}
                                         onChange={handleInputChange}
                                         multiline
                                         rows={4}
                                     />
                                 </Grid>
                                 <Grid item xs={12}>
-                                    <Button variant="contained" color="secondary" type="submit" onClick={handleFormSubmit}>
+                                    <Button variant="contained" color="secondary" type="submit" style={{ fontFamily: 'Varta, sans-serif' }} onClick={handleFormSubmit}>
                                         Add Post
                                 </Button>
                                 </Grid>
@@ -68,7 +70,7 @@ function PostForm(props) {
                         </form>
                     </DialogContent>
                     <DialogActions>
-                        <Button onClick={handleClose} color="primary">
+                        <Button onClick={handleClose} color="primary" style={{ fontFamily: 'Varta, sans-serif' }}>
                             Close
                         </Button>
                     </DialogActions>
