@@ -1,8 +1,17 @@
 import React, { useState } from "react";
-import FullCalendar from '@fullcalendar/react';
-import dayGridPlugin from '@fullcalendar/daygrid';
-import timeGridPlugin from "@fullcalendar/timegrid";
 import moment from "moment";
+import Paper from '@material-ui/core/Paper';
+import { ViewState } from '@devexpress/dx-react-scheduler';
+import {
+    Scheduler,
+    DayView,
+    WeekView,
+    Appointments,
+    Toolbar,
+    ViewSwitcher,
+    MonthView,
+    DateNavigator
+} from '@devexpress/dx-react-scheduler-material-ui';
 
 
 function CalendarComponent(props) {
@@ -63,16 +72,29 @@ function CalendarComponent(props) {
     });
 
     return (
-        <FullCalendar
-            plugins={[dayGridPlugin, timeGridPlugin]}
-            initialView="dayGridMonth"
-            headerToolbar={{
-                left: "prev,next",
-                center: "title",
-                right: "dayGridMonth,timeGridWeek,timeGridDay"
-            }}
-            events={events}
-        />
+        <Paper>
+            <Scheduler
+                data={events}
+            >
+                <ViewState
+                    currentDate={moment().format()}
+                    defaultCurrentViewName="Week"
+                />
+                <MonthView />
+                <DayView
+                    startDayHour={0}
+                    endDayHour={24}
+                />
+                <WeekView
+                    startDayHour={0}
+                    endDayHour={24}
+                />
+                <Toolbar />
+                <DateNavigator />
+                <ViewSwitcher />
+                <Appointments />
+            </Scheduler>
+        </Paper>
     )
 
 }
