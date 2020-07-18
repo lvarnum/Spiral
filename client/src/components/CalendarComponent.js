@@ -11,7 +11,8 @@ import {
     ViewSwitcher,
     MonthView,
     TodayButton,
-    DateNavigator
+    DateNavigator,
+    AllDayPanel
 } from '@devexpress/dx-react-scheduler-material-ui';
 
 
@@ -24,7 +25,8 @@ function CalendarComponent(props) {
         if (!item.done) {
             events.push({
                 title: item.name,
-                startDate: ('2020, 07, 24')
+                startDate: (`${item.due.substring(0, 4)}, ${item.due.substring(5, 7)}, ${item.due.substring(8, 10)}`),
+                startDate: (`${item.due.substring(0, 4)}, ${item.due.substring(5, 7)}, ${item.due.substring(8, 10)}`)
             });
         }
     });
@@ -60,6 +62,7 @@ function CalendarComponent(props) {
                     startDayHour={0}
                     endDayHour={24}
                 />
+                <AllDayPanel />
                 <Appointments />
                 <Toolbar />
                 <DateNavigator />
