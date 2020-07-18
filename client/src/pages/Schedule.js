@@ -59,18 +59,18 @@ function Schedule(props) {
             <Grid container spacing={2} direction="column" align="center" justify="center" alignItems="center"
                 style={{ border: "solid 2px #2c387e", marginBottom: "15px" }}>
                 <Grid item xs={12}>
-                    <Typography variant="h3">{props.user.firstName}'s Schedule</Typography>
+                    <Typography variant="h3" style={{ fontFamily: 'Varta, sans-serif' }}>{props.user.firstName}'s Schedule</Typography>
                 </Grid >
                 <Grid item xs={12}>
-                    <Typography variant="h4">{universityState.university.name}</Typography>
+                    <Typography variant="h4" style={{ fontFamily: 'Varta, sans-serif' }}>{universityState.university.name}</Typography>
                 </Grid>
                 <Grid item xs={12}>
-                    <Typography variant="h5">{props.user.session} Session</Typography>
+                    <Typography variant="h5" style={{ fontFamily: 'Varta, sans-serif' }}>{props.user.session} Session</Typography>
                 </Grid>
             </Grid>
             <Grid container spacing={2} direction="column" align="center" justify="center" alignItems="center">
                 <Grid item xs={12}>
-                    <Typography variant="h5">{moment().format('dddd, MMMM Do YYYY')}</Typography>
+                    <Typography variant="h5" style={{ fontFamily: 'Varta, sans-serif' }}>{moment().format('dddd, MMMM Do YYYY')}</Typography>
                 </Grid>
                 <Grid item xs={12}>
                     <IconButton component={Link} to={"/calendar"}>

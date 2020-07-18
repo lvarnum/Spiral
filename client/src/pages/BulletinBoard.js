@@ -91,7 +91,7 @@ function BulletinBoard(props) {
             <Grid container spacing={2} direction="column" align="center" justify="center" alignItems="center"
                 style={{ border: "solid 2px #2c387e", marginBottom: "15px" }}>
                 <Grid item xs={12}>
-                    <Typography variant="h3">Community Bulletin</Typography>
+                    <Typography variant="h3" style={{ fontFamily: 'Varta, sans-serif' }}>Community Bulletin</Typography>
                 </Grid >
                 <Grid item xs={12}>
                     <Typography variant="h4">{universityState.university}</Typography>
@@ -99,7 +99,7 @@ function BulletinBoard(props) {
             </Grid>
             <Grid container spacing={2} direction="column" align="center" justify="center" alignItems="center">
                 <Grid item xs={12}>
-                    <Typography variant="h5">{moment().format('dddd, MMMM Do YYYY')}</Typography>
+                    <Typography variant="h5" style={{ fontFamily: 'Varta, sans-serif' }}>{moment().format('dddd, MMMM Do YYYY')}</Typography>
                 </Grid>
                 <Grid item xs={12}>
                     <PostForm
@@ -117,11 +117,12 @@ function BulletinBoard(props) {
                             indicatorColor="primary"
                             textColor="primary"
                             variant="fullWidth"
+                            style={{ fontFamily: 'Varta, sans-serif' }}
                         >
-                            <Tab label="All" onClick={loadPosts} />
-                            <Tab label="Academic" onClick={loadFiltered.bind(this, "academic")} />
-                            <Tab label="Clubs" onClick={loadFiltered.bind(this, "clubs")} />
-                            <Tab label="Events" onClick={loadFiltered.bind(this, "events")} />
+                            <Tab label="All" style={{ fontFamily: 'Varta, sans-serif' }} onClick={loadPosts} />
+                            <Tab label="Academic" style={{ fontFamily: 'Varta, sans-serif' }} onClick={loadFiltered.bind(this, "academic")} />
+                            <Tab label="Clubs" style={{ fontFamily: 'Varta, sans-serif' }} onClick={loadFiltered.bind(this, "clubs")} />
+                            <Tab label="Events" style={{ fontFamily: 'Varta, sans-serif' }} onClick={loadFiltered.bind(this, "events")} />
                         </Tabs>
                     </Paper>
                 </Grid>

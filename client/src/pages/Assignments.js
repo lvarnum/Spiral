@@ -83,15 +83,15 @@ function Assignments(props) {
             <Grid container spacing={2} direction="column" align="center" justify="center" alignItems="center"
                 style={{ border: "solid 2px #2c387e", marginBottom: "15px" }}>
                 <Grid item xs={5}>
-                    <Typography variant="h3">{courseState.course}</Typography>
+                    <Typography variant="h3" style={{ fontFamily: 'Varta, sans-serif' }}>{courseState.course}</Typography>
                 </Grid>
                 <Grid item xs={5}>
-                    <Typography variant="h5">{props.user.session} Session</Typography>
+                    <Typography variant="h5"style={{ fontFamily: 'Varta, sans-serif' }}>{props.user.session} Session</Typography>
                 </Grid>
             </Grid>
             <Grid container spacing={2} direction="column" align="center" justify="center" alignItems="center">
                 <Grid item xs={12}>
-                    <Typography variant="h5">{moment().format('dddd, MMMM Do YYYY')}</Typography>
+                    <Typography variant="h5" style={{ fontFamily: 'Varta, sans-serif' }}>{moment().format('dddd, MMMM Do YYYY')}</Typography>
                 </Grid>
                 <Grid item xs={5}>
                     <IconButton component={Link} to={"/calendar"}>

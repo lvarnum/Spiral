@@ -14,35 +14,36 @@ function UserInfo(props) {
             <Paper style={{ padding: "15px", border: "solid 2px #2c387e" }}>
                 <Grid container spacing={2} direction="column" align="center" justify="center" alignItems="center">
                     <Grid item xs={12}>
-                        <Typography variant="h4">User Info</Typography>
+                        <Typography variant="h4" style={{ fontFamily: 'Varta, sans-serif' }}>User Info</Typography>
                     </Grid >
                     <Grid item xs={12}>
-                        <Typography variant="body1"><b>First Name: </b>{props.user.firstName}</Typography>
+                        <Typography variant="body1" style={{ fontFamily: 'Varta, sans-serif' }}><b>First Name: </b>{props.user.firstName}</Typography>
                     </Grid >
                     <Grid item xs={12}>
-                        <Typography variant="body1"><b>Last Name: </b>{props.user.lastName}</Typography>
+                        <Typography variant="body1" style={{ fontFamily: 'Varta, sans-serif' }}><b>Last Name: </b>{props.user.lastName}</Typography>
                     </Grid >
                     <Grid item xs={12}>
-                        <Typography variant="body1"><b>University: </b>{infoState.university}</Typography>
+                        <Typography variant="body1" style={{ fontFamily: 'Varta, sans-serif' }}><b>University: </b>{infoState.university}</Typography>
                     </Grid >
                     <Grid item xs={12}>
-                        <Typography variant="body1"><b>Session: </b>{infoState.session}</Typography>
+                        <Typography variant="body1" style={{ fontFamily: 'Varta, sans-serif' }}><b>Session: </b>{infoState.session}</Typography>
                     </Grid >
                     <Grid item xs={12}>
-                        <Typography variant="body1"><b>Update Session: </b></Typography>
+                        <Typography variant="body1" style={{ fontFamily: 'Varta, sans-serif' }}><b>Update Session: </b></Typography>
                         <FormControl>
-                            <InputLabel>Session</InputLabel>
+                            <InputLabel style={{ fontFamily: 'Varta, sans-serif' }}>Session</InputLabel>
                             <Select
                                 name="session"
                                 id="session-select"
                                 style={{ width: 200 }}
                                 value={formObject.session}
                                 onChange={handleInputChange}
+                                style={{ fontFamily: 'Varta, sans-serif' }}
                             >
-                                <MenuItem value="Spring">Spring</MenuItem>
-                                <MenuItem value="Summer">Summer</MenuItem>
-                                <MenuItem value="Fall">Fall</MenuItem>
-                                <MenuItem value="Winter">Winter</MenuItem>
+                                <MenuItem value="Spring" style={{ fontFamily: 'Varta, sans-serif' }}>Spring</MenuItem>
+                                <MenuItem value="Summer" style={{ fontFamily: 'Varta, sans-serif' }}>Summer</MenuItem>
+                                <MenuItem value="Fall" style={{ fontFamily: 'Varta, sans-serif' }}>Fall</MenuItem>
+                                <MenuItem value="Winter" style={{ fontFamily: 'Varta, sans-serif' }}>Winter</MenuItem>
                             </Select>
                         </FormControl>
                         <IconButton aria-label="check" style={{ marginLeft: "10px" }}
@@ -55,14 +56,14 @@ function UserInfo(props) {
             <Paper style={{ padding: "15px", marginTop: "30px", marginBottom: "30px", border: "solid 2px #2c387e" }}>
                 <Grid container spacing={2} direction="column" align="center" justify="center" alignItems="center">
                     <Grid item xs={12}>
-                        <Typography variant="h4">Classes</Typography>
+                        <Typography variant="h4" style={{ fontFamily: 'Varta, sans-serif' }}>Classes</Typography>
                     </Grid >
                     <Grid item xs={12}>
                         <List>
                             {infoState.scheduleItems.map(item => (
                                 <>
                                     <ListItem alignItems="flex-start" style={{ backgroundColor: "#2c387e" }}>
-                                        <ListItemText style={{ color: "white" }}>{item.course}</ListItemText>
+                                        <ListItemText style={{ color: "white" }}>{item.course} </ListItemText>
                                         <IconButton aria-label="delete" style={{ backgroundColor: "white", marginLeft: "20px" }}
                                             onClick={handleClassDelete.bind(this, item._id, item.assignments)}>
                                             <DeleteIcon style={{ color: "red" }} />
@@ -79,7 +80,7 @@ function UserInfo(props) {
             <Paper style={{ padding: "15px", border: "solid 2px #2c387e" }}>
                 <Grid container spacing={2} direction="column" align="center" justify="center" alignItems="center">
                     <Grid item xs={12}>
-                        <Typography variant="h4">Posts</Typography>
+                        <Typography variant="h4" style={{ fontFamily: 'Varta, sans-serif' }}>Posts</Typography>
                     </Grid >
                     <Grid item xs={12}>
                         <List>

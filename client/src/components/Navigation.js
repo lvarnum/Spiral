@@ -29,6 +29,7 @@ function Navigation(props) {
             indicatorColor="secondary"
             textColor="secondary"
             aria-label="navbar"
+            
           >
             <Tab component={Link} to="/schedule" icon={<HomeIcon />} />
             <Tab component={Link} to="/bulletinboard" icon={<ForumIcon />} />

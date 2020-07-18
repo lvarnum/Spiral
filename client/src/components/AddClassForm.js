@@ -62,7 +62,7 @@ function AddClassForm(props) {
 
     return (
         <>
-            <IconButton aria-label="add" onClick={handleClickOpen} >
+            <IconButton aria-label="add" onClick={handleClickOpen} style={{ fontFamily: 'Varta, sans-serif' }}>
                 <AddCircleIcon style={{ fontSize: "65px" }} color="secondary" /></IconButton>
             <Paper>
                 <Dialog open={open} onClose={handleClose} aria-labelledby="add-class-form">
@@ -151,7 +151,7 @@ function AddClassForm(props) {
                                         style={{ width: 150 }}
                                         freeSolo
                                         renderInput={(params) => (
-                                            <TextField {...params} label="Class Prefix" variant="outlined" />
+                                            <TextField {...params} label="Class Prefix" variant="outlined" style={{ fontFamily: 'Varta, sans-serif' }}/>
                                         )}
                                     />
                                 </Grid>
@@ -220,7 +220,7 @@ function AddClassForm(props) {
                                         style={{ width: 150 }}
                                         freeSolo
                                         renderInput={(params) => (
-                                            <TextField {...params} label="Class Number" variant="outlined" />
+                                            <TextField {...params} label="Class Number" variant="outlined" style={{ fontFamily: 'Varta, sans-serif' }}/>
                                         )}
                                     />
                                 </Grid>
@@ -233,6 +233,7 @@ function AddClassForm(props) {
                                         onChange={handleInputChange}
                                         as="input"
                                         type="text"
+                                        style={{ fontFamily: 'Varta, sans-serif' }}
                                     />
                                 </Grid>
                                 <Grid item xs={12}>
@@ -246,39 +247,47 @@ function AddClassForm(props) {
                                             />
                                         }
                                         label="Online"
+                                        style={{ fontFamily: 'Varta, sans-serif' }}
                                     />
                                 </Grid>
                                 <Grid item xs={12}>
                                     <FormControl component="fieldset">
-                                        <FormLabel component="legend">Class Days</FormLabel>
+                                        <FormLabel component="legend" style={{ fontFamily: 'Varta, sans-serif' }}>Class Days</FormLabel>
                                         <FormGroup>
                                             <FormControlLabel
                                                 control={<Checkbox checked={days.Monday} onChange={handleChange} name="Monday" color="primary" />}
                                                 label="Monday"
+                                                style={{ fontFamily: 'Varta, sans-serif' }}
                                             />
                                             <FormControlLabel
                                                 control={<Checkbox checked={days.Tuesday} onChange={handleChange} name="Tuesday" color="primary" />}
                                                 label="Tuesday"
+                                                style={{ fontFamily: 'Varta, sans-serif' }}
                                             />
                                             <FormControlLabel
                                                 control={<Checkbox checked={days.Wednesday} onChange={handleChange} name="Wednesday" color="primary" />}
                                                 label="Wednesday"
+                                                style={{ fontFamily: 'Varta, sans-serif' }}
                                             />
                                             <FormControlLabel
                                                 control={<Checkbox checked={days.Thursday} onChange={handleChange} name="Thursday" color="primary" />}
                                                 label="Thursday"
+                                                style={{ fontFamily: 'Varta, sans-serif' }}
                                             />
                                             <FormControlLabel
                                                 control={<Checkbox checked={days.Friday} onChange={handleChange} name="Friday" color="primary" />}
                                                 label="Friday"
+                                                style={{ fontFamily: 'Varta, sans-serif' }}
                                             />
                                             <FormControlLabel
                                                 control={<Checkbox checked={days.Saturday} onChange={handleChange} name="Saturday" color="primary" />}
                                                 label="Saturday"
+                                                style={{ fontFamily: 'Varta, sans-serif' }}
                                             />
                                             <FormControlLabel
                                                 control={<Checkbox checked={days.Sunday} onChange={handleChange} name="Sunday" color="primary" />}
                                                 label="Sunday"
+                                                style={{ fontFamily: 'Varta, sans-serif' }}
                                             />
                                         </FormGroup>
                                     </FormControl>
@@ -288,6 +297,7 @@ function AddClassForm(props) {
                                         id="start-time"
                                         label="Start Time"
                                         type="time"
+                                        style={{ fontFamily: 'Varta, sans-serif' }}
                                         value={formObject.startTime}
                                         name="startTime"
                                         onChange={handleInputChange}
@@ -313,6 +323,7 @@ function AddClassForm(props) {
                                         inputProps={{
                                             step: 300, // 5 min
                                         }}
+                                        style={{ fontFamily: 'Varta, sans-serif' }}
                                     />
                                 </Grid>
                                 <Grid item xs={12}>
@@ -324,6 +335,7 @@ function AddClassForm(props) {
                                         as="input"
                                         type="text"
                                         style={{ width: 200 }}
+                                        style={{ fontFamily: 'Varta, sans-serif' }}
                                     />
                                 </Grid>
                                 <Grid item xs={12}>
@@ -335,10 +347,11 @@ function AddClassForm(props) {
                                         as="input"
                                         type="text"
                                         style={{ width: 100 }}
+                                        style={{ fontFamily: 'Varta, sans-serif' }}
                                     />
                                 </Grid>
                                 <Grid item xs={12}>
-                                    <Button variant="contained" color="secondary" type="submit" onClick={handleClick}>
+                                    <Button variant="contained" color="secondary" type="submit" onClick={handleClick} style={{ fontFamily: 'Varta, sans-serif' }}>
                                         Add Class
                             </Button>
                                 </Grid>
@@ -346,7 +359,7 @@ function AddClassForm(props) {
                         </form>
                     </DialogContent>
                     <DialogActions>
-                        <Button onClick={handleClose} color="primary">
+                        <Button onClick={handleClose} color="primary" style={{ fontFamily: 'Varta, sans-serif' }}>
                             Close
                         </Button>
                     </DialogActions>
