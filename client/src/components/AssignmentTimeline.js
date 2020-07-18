@@ -1,6 +1,6 @@
 import React from "react";
 import {
-    Timeline, TimelineItem, TimelineSeparator, TimelineConnector, TimelineContent, TimelineDot, TimelineOppositeContent
+    Timeline, TimelineItem, TimelineSeparator, TimelineConnector, TimelineContent, TimelineDot
 } from '@material-ui/lab';
 import LabelImportantIcon from '@material-ui/icons/LabelImportant';
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -24,29 +24,20 @@ function AssignmentTimeline(props) {
         <Timeline >
             {assignmentState.assignments.map(item => (
                 <TimelineItem key={item._id}>
-                    <TimelineOppositeContent style={{ flex: "0 0 15%" }}>
-                        {item.done === false &&
-                            <Typography>
-                                {moment(item.due).format('MM/DD/YYYY')}
-                            </Typography>
-                        }
-                        {item.done === true &&
-                            <Typography style={{ textDecoration: "line-through" }}>
-                                {moment(item.due).format('MM/DD/YYYY')}
-                            </Typography>
-                        }
-                    </TimelineOppositeContent>
                     <TimelineSeparator>
                         <TimelineDot>
                             <LabelImportantIcon color="primary" />
                         </TimelineDot>
                         <TimelineConnector />
                     </TimelineSeparator>
-                    <TimelineContent >
+                    <TimelineContent style={{ flex: '0 1 100%' }}>
                         <Paper elevation={3} style={{ padding: "10px", backgroundColor: "#2c387e", color: "white" }}>
                             {item.done === false &&
                                 <>
                                     <Typography variant="h6" component="h1">{item.name}</Typography>
+                                    <Typography>
+                                        Due: {moment(item.due).format('MM/DD/YYYY')}
+                                    </Typography>
                                     <Typography><b>Notes: </b></Typography>
                                     <Typography>{item.notes}</Typography>
                                     <IconButton aria-label="check"
@@ -63,6 +54,9 @@ function AssignmentTimeline(props) {
                             {item.done === true &&
                                 <>
                                     <Typography variant="h5" component="h1" style={{ textDecoration: "line-through" }}>{item.name}</Typography>
+                                    <Typography style={{ textDecoration: "line-through" }}>
+                                        Due: {moment(item.due).format('MM/DD/YYYY')}
+                                    </Typography>
                                     <Typography style={{ textDecoration: "line-through" }}><b>Notes: </b></Typography>
                                     <Typography style={{ textDecoration: "line-through" }}>{item.notes}</Typography>
                                     <IconButton aria-label="delete" style={{ backgroundColor: "white", marginTop: "10px" }}

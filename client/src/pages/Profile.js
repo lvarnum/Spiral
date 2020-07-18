@@ -1,53 +1,97 @@
-import React, { useState } from 'react';
-// import { UserInfo, UserPosts } from "../components";
-// import API from "../utils/API";
-import { Link } from "react-router-dom";
-import { makeStyles } from '@material-ui/core/styles';
-import { Tabs, Tab, Grid} from '@material-ui/core';
-import AssignmentIndIcon from '@material-ui/icons/AssignmentInd';
-import CommentIcon from '@material-ui/icons/Comment';
-import ClassIcon from '@material-ui/icons/Class';
+import React, { useState, useEffect } from 'react';
+import { Grid, Typography } from '@material-ui/core';
+import { UserInfo } from "../components";
+import API from "../utils/API";
 
-const useStyles = makeStyles({
-    root: {
-        maxWidth: "500"
-    },
-});
 
 function Profile(props) {
-    const { user } = props;
+    const [infoState, setInfo] = useState({
+        university: "",
+        session: "",
+        scheduleItems: [],
+        posts: []
+    });
+    const initialFormState = { session: "" };
+    const [formObject, setFormObject] = useState(initialFormState);
 
-    const classes = useStyles();
-    const [value, setValue] = useState(0);
-    
-    const handleChange = (event, newValue) => {
-        setValue(newValue);
-    };
+    useEffect(() => {
+        loadInfo();
+    }, []);
+
+    const loadInfo = () => {
+        API.User.getById(props.user.id)
+            .then(res => setInfo({
+                university: res.data.university.name,
+                session: res.data.session,
+                scheduleItems: res.data.scheduleItems,
+                posts: res.data.posts
+            }));
+    }
+
+    const handleInputChange = (event) => {
+        event.preventDefault();
+        const { name, value } = event.target;
+        setFormObject({ ...formObject, [name]: value });
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        API.User.update(props.user.id,
+            { session: formObject.session })
+            .then(res => {
+                setFormObject(initialFormState);
+                loadInfo();
+            });
+    }
+
+    const handleClassDelete = (id, assignments) => {
+        assignments.forEach(item => {
+            API.User.update(props.user.id, {
+                $pull: { assignments: item }
+            }).then(res => {
+                API.Assignment.delete(item);
+            });
+        });
+        API.ScheduleItem.delete(id)
+            .then(res => {
+                API.User.update(props.user.id, {
+                    $pull: { scheduleItems: id }
+                }).then(res => {
+                    loadInfo();
+                });
+            });
+    }
+
+    const handlePostDelete = (id) => {
+        API.Post.delete(id)
+            .then(res => {
+                API.User.update(props.user.id, {
+                    $pull: { posts: id }
+                }).then(res => {
+                    loadInfo();
+                })
+            });
+    }
+
 
     return (
         <>
-        {
-            user.email &&
-            <Grid square style={{ backgroundColor:"white", marginLeft:"auto", marginRight:"auto"}} className={classes.root}>
-                <Tabs
-                    value={value}
-                    onChange={handleChange}
-                    variant="fullWidth"
-                    indicatorColor="primary"
-                    textColor="secondary"
-                    aria-label="navTabs"
-                    centered
-                    
-                >
-
-                    <Tab component={Link} to="/UserInfo" icon={<AssignmentIndIcon />} label="User Info" />
-                    <Tab component={Link} to="/UserPosts" icon={<CommentIcon />} label="User Posts" />
-                    <Tab component={Link} to="/UserClasses" icon={<ClassIcon />} label="User Classes" />
-
-                </Tabs>
+            <Grid container spacing={2} direction="column" align="center" justify="center" alignItems="center"
+                style={{ border: "solid 2px #2c387e", marginBottom: "30px" }}>
+                <Grid item xs={12}>
+                    <Typography variant="h3">{props.user.firstName}'s Profile</Typography>
+                </Grid >
             </Grid>
-        }
-    </>
+            <UserInfo
+                user={props.user}
+                infoState={infoState}
+                handleInputChange={handleInputChange}
+                handleSubmit={handleSubmit}
+                formObject={formObject}
+                handleClassDelete={handleClassDelete}
+                handlePostDelete={handlePostDelete}
+            />
+        </>
 
     )
 

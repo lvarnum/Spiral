@@ -34,7 +34,7 @@ function PostForm(props) {
                                 </Grid>
                                 <FormControl component="fieldset">
                                     <FormLabel component="legend">Post Type</FormLabel>
-                                    <RadioGroup defaultValue="Study Group/Academic Inquiries" aria-label="postType" name="type" onChange={handleInputChange}>
+                                    <RadioGroup defaultValue="Study Group/Academic Inquiries" aria-label="postType" name="type" onChange={handleInputChange} required>
                                         <FormControlLabel value="Study Group/Academic Inquiries" control={<Radio />} label="Study Group/Academic Inquiries" />
                                         <FormControlLabel value="Club Info/Updates" control={<Radio />} label="Club Info/Updates" />
                                         <FormControlLabel value="Events/Extra Curriculars" control={<Radio />} label="Events/Extra Curriculars" />
@@ -42,11 +42,11 @@ function PostForm(props) {
                                 </FormControl>
                                 <Grid item xs={12}>
                                     <TextField
+                                        required
                                         label="Post Title"
                                         value={formObject.title}
                                         name="title"
                                         onChange={handleInputChange}
-                                        helperText="Enter the Title of your Post"
                                     />
                                 </Grid>
                                 <Grid item xs={12}>
@@ -55,7 +55,8 @@ function PostForm(props) {
                                         value={formObject.body}
                                         name="body"
                                         onChange={handleInputChange}
-                                        helperText="Enter the Description of your Post"
+                                        multiline
+                                        rows={4}
                                     />
                                 </Grid>
                                 <Grid item xs={12}>

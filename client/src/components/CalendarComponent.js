@@ -19,10 +19,20 @@ function CalendarComponent(props) {
     var events = [];
 
     assignmentState.assignments.forEach(item => {
-        events.push({
-            title: item.name,
-            date: moment(item.due).format('YYYY-MM-DD')
-        });
+        if (!item.done) {
+            events.push({
+                title: item.name,
+                date: moment(item.due).format('YYYY-MM-DD'),
+                color: '#ffc400'
+            });
+        }
+        else {
+            events.push({
+                title: item.name,
+                date: moment(item.due).format('YYYY-MM-DD'),
+                color: '#808080'
+            });
+        }
     });
     scheduleState.schedule.forEach(item => {
         if (item.location !== "Online ") {
@@ -35,7 +45,19 @@ function CalendarComponent(props) {
                 startTime: item.startTime,
                 endTime: item.endTime,
                 daysOfWeek: days,
-                startRecur: moment().format('YYYY-MM-DD')
+                startRecur: moment().format('YYYY-MM-DD'),
+                color: '#2c387e'
+            });
+        }
+        else {
+            events.push({
+                title: `${item.course} - Online`,
+                allDay: true,
+                daysOfWeek: [0, 1, 2, 3, 4, 5, 6],
+                startRecur: moment().format('YYYY-MM-DD'),
+                borderColor: '#2c387e',
+                textColor: 'black',
+                color: '#E5F9FF'
             });
         }
     });
@@ -43,7 +65,7 @@ function CalendarComponent(props) {
     return (
         <FullCalendar
             plugins={[dayGridPlugin, timeGridPlugin]}
-            initialView="timeGridDay"
+            initialView="dayGridMonth"
             headerToolbar={{
                 left: "prev,next",
                 center: "title",

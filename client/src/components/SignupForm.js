@@ -45,17 +45,18 @@ function SignupForm(props) {
 
     return (
         <>
-            <Paper>
+            <Paper style={{ padding: "30px", border: "solid 2px #2c387e", marginTop: "30px" }}>
                 <Container maxWidth="sm">
                     <form>
-                        <Grid container spacing={3}>
-                            <Grid item xs={12}>
+                        <Grid container spacing={3} direction="column" align="center" justify="center" alignItems="center">
+                            <Grid item xs={12} style={{ backgroundColor: "#2c387e", color: "white", width: "100%" }}>
                                 <Typography variant="h4" gutterBottom>
                                     Signup
                                 </Typography>
                             </Grid>
                             <Grid item xs={12}>
                                 <TextField
+                                    required
                                     label="First Name"
                                     value={formObject.firstName}
                                     name="firstName"
@@ -78,6 +79,7 @@ function SignupForm(props) {
                             </Grid>
                             <Grid item xs={12}>
                                 <TextField
+                                    required
                                     label="Email"
                                     value={formObject.email}
                                     name="email"
@@ -89,6 +91,7 @@ function SignupForm(props) {
                             </Grid>
                             <Grid item xs={12}>
                                 <TextField
+                                    required
                                     label="Password"
                                     value={formObject.password}
                                     name="password"
@@ -102,6 +105,7 @@ function SignupForm(props) {
                                 <FormControl>
                                     <InputLabel>Session</InputLabel>
                                     <Select
+                                        required
                                         name="session"
                                         id="session-select"
                                         style={{ width: 200 }}
@@ -173,17 +177,19 @@ function SignupForm(props) {
                                         style={{ width: 300 }}
                                         freeSolo
                                         renderInput={(params) => (
-                                            <TextField {...params} label="University" variant="outlined" />
+                                            <TextField {...params} label="University" variant="outlined" style={{ textAlign: "left" }} />
                                         )}
                                     />
                                     <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
                                         <form onSubmit={handleSubmit}>
-                                            <DialogTitle id="form-dialog-title">Add a new University</DialogTitle>
+                                            <DialogTitle id="form-dialog-title" style={{ textAlign: "center" }}>
+                                                Add a new University</DialogTitle>
                                             <DialogContent>
                                                 <DialogContentText>
                                                     Can't find your University? Please, add it!
                                                 </DialogContentText>
                                                 <TextField
+                                                    required
                                                     autoFocus
                                                     margin="dense"
                                                     id="name"
@@ -191,6 +197,7 @@ function SignupForm(props) {
                                                     onChange={(event) => setDialogValue({ ...dialogValue, name: event.target.value })}
                                                     label="Name"
                                                     type="text"
+                                                    style={{ marginBottom: "15px" }}
                                                 />
                                                 <Autocomplete
                                                     id="state"
@@ -268,10 +275,10 @@ function SignupForm(props) {
                                                 />
                                             </DialogContent>
                                             <DialogActions>
-                                                <Button onClick={handleClose} color="secondary">
+                                                <Button onClick={handleClose} color="primary">
                                                     Cancel
                                                 </Button>
-                                                <Button type="submit" color="secondary">
+                                                <Button type="submit" color="primary">
                                                     Add
                                                 </Button>
                                             </DialogActions>
@@ -283,6 +290,9 @@ function SignupForm(props) {
                                 <Button variant="contained" color="secondary" type="submit" onClick={handleFormSubmit}>
                                     Signup
                                 </Button>
+                            </Grid>
+                            <Grid item xs={12}>
+                                <a href="/login" style={{ textDecoration: "none", color: "#2c387e" }}>Or Login</a>
                             </Grid>
                         </Grid>
                     </form>

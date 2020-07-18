@@ -59,7 +59,7 @@ function Schedule(props) {
             <Grid container spacing={2} direction="column" align="center" justify="center" alignItems="center"
                 style={{ border: "solid 2px #2c387e", marginBottom: "15px" }}>
                 <Grid item xs={12}>
-                    <Typography variant="h2">{props.user.firstName}'s Schedule</Typography>
+                    <Typography variant="h3">{props.user.firstName}'s Schedule</Typography>
                 </Grid >
                 <Grid item xs={12}>
                     <Typography variant="h4">{universityState.university.name}</Typography>
@@ -70,13 +70,11 @@ function Schedule(props) {
             </Grid>
             <Grid container spacing={2} direction="column" align="center" justify="center" alignItems="center">
                 <Grid item xs={12}>
-                    <Typography variant="h5">{moment().format('dddd, MMMM Do YYYY, h:mm a')}</Typography>
+                    <Typography variant="h5">{moment().format('dddd, MMMM Do YYYY')}</Typography>
                 </Grid>
                 <Grid item xs={12}>
                     <IconButton component={Link} to={"/calendar"}>
                         <CalendarTodayIcon style={{ fontSize: "50px" }} color="primary" /></IconButton>
-                </Grid>
-                <Grid item xs={12}>
                     <AddClassForm
                         formObject={formObject}
                         handleInputChange={handleInputChange}

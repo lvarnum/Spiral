@@ -225,6 +225,17 @@ function AddClassForm(props) {
                                     />
                                 </Grid>
                                 <Grid item xs={12}>
+                                    <TextField
+                                        required
+                                        label="Professor Name"
+                                        value={formObject.professor}
+                                        name="professor"
+                                        onChange={handleInputChange}
+                                        as="input"
+                                        type="text"
+                                    />
+                                </Grid>
+                                <Grid item xs={12}>
                                     <FormControlLabel
                                         control={
                                             <Checkbox
@@ -274,16 +285,6 @@ function AddClassForm(props) {
                                 </Grid>
                                 <Grid item xs={12}>
                                     <TextField
-                                        label="Professor Name"
-                                        value={formObject.professor}
-                                        name="professor"
-                                        onChange={handleInputChange}
-                                        as="input"
-                                        type="text"
-                                    />
-                                </Grid>
-                                <Grid item xs={12}>
-                                    <TextField
                                         id="start-time"
                                         label="Start Time"
                                         type="time"
@@ -324,6 +325,8 @@ function AddClassForm(props) {
                                         type="text"
                                         style={{ width: 200 }}
                                     />
+                                </Grid>
+                                <Grid item xs={12}>
                                     <TextField
                                         label="Room"
                                         value={formObject.roomNumber}
