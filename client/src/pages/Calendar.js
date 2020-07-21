@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { CalendarComponent } from "../components";
-import { Grid, Typography } from "@material-ui/core";
+import { Grid, Typography, CircularProgress } from "@material-ui/core";
 import API from "../utils/API";
 
 
@@ -33,13 +33,16 @@ function Calendar(props) {
       <Grid container spacing={2} direction="column" align="center" justify="center" alignItems="center"
         style={{ border: "solid 2px #2c387e", marginBottom: "15px" }}>
         <Grid item xs={12}>
-          <Typography variant="h3">{props.user.firstName}'s Calendar</Typography>
+          <Typography variant="h3" style={{ fontFamily: 'Varta, sans-serif' }}>{props.user.firstName}'s Calendar</Typography>
         </Grid >
         <Grid item xs={12}>
-          <Typography variant="h4">{universityState.university}</Typography>
+          {universityState.university === "" &&
+            <CircularProgress color="primary" />
+          }
+          <Typography variant="h4" style={{ fontFamily: 'Varta, sans-serif' }}>{universityState.university}</Typography>
         </Grid>
         <Grid item xs={12}>
-          <Typography variant="h5">{props.user.session} Session</Typography>
+          <Typography variant="h5" style={{ fontFamily: 'Varta, sans-serif' }}>{props.user.session} Session</Typography>
         </Grid>
       </Grid>
       <CalendarComponent

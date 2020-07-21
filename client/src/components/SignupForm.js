@@ -45,11 +45,11 @@ function SignupForm(props) {
 
     return (
         <>
-            <Paper style={{ padding: "30px", border: "solid 2px #2c387e", marginTop: "20px" }}>
+            <Paper style={{ padding: "30px", border: "solid 2px #2c387e" }}>
                 <Container maxWidth="sm">
                     <form>
                         <Grid container spacing={3} direction="column" align="center" justify="center" alignItems="center">
-                            <Grid item xs={12} style={{ backgroundColor: "#2c387e", color: "white", width: "100%" }}>
+                            <Grid item xs={12} style={{ backgroundColor: "#2c387e", color: "white", width: "100%", marginBottom: "15px" }}>
                                 <Typography variant="h4" gutterBottom style={{ fontFamily: 'Varta, sans-serif' }}>
                                     Signup
                                 </Typography>
@@ -112,9 +112,8 @@ function SignupForm(props) {
                                         required
                                         name="session"
                                         id="session-select"
-                                        style={{ width: 200 }}
+                                        style={{ width: 200, fontFamily: 'Varta, sans-serif' }}
                                         onChange={handleInputChange}
-                                        style={{ fontFamily: 'Varta, sans-serif' }}
                                     >
                                         <MenuItem value="Spring" style={{ fontFamily: 'Varta, sans-serif' }}>Spring</MenuItem>
                                         <MenuItem value="Summer" style={{ fontFamily: 'Varta, sans-serif' }}>Summer</MenuItem>
@@ -182,12 +181,12 @@ function SignupForm(props) {
                                         style={{ width: 200 }}
                                         freeSolo
                                         renderInput={(params) => (
-                                            <TextField {...params} label="University" variant="outlined" style={{ textAlign: "left" }} style={{ fontFamily: 'Varta, sans-serif' }} />
+                                            <TextField {...params} label="University" variant="outlined" style={{ textAlign: "left", fontFamily: 'Varta, sans-serif' }} />
                                         )}
                                     />
                                     <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
                                         <form onSubmit={handleSubmit}>
-                                            <DialogTitle id="form-dialog-title" style={{ textAlign: "center" }} style={{ fontFamily: 'Varta, sans-serif' }}>
+                                            <DialogTitle id="form-dialog-title" style={{ textAlign: "center", fontFamily: 'Varta, sans-serif' }}>
                                                 Add a new University</DialogTitle>
                                             <DialogContent>
                                                 <DialogContentText style={{ fontFamily: 'Varta, sans-serif' }}>
@@ -202,14 +201,12 @@ function SignupForm(props) {
                                                     onChange={(event) => setDialogValue({ ...dialogValue, name: event.target.value })}
                                                     label="Name"
                                                     type="text"
-                                                    style={{ marginBottom: "15px" }}
-                                                    style={{ fontFamily: 'Varta, sans-serif' }}
+                                                    style={{ marginBottom: "15px", fontFamily: 'Varta, sans-serif' }}
                                                 />
                                                 <Autocomplete
                                                     id="state"
                                                     margin="dense"
                                                     inputValue={inputValue}
-                                                    style={{ fontFamily: 'Varta, sans-serif' }}
                                                     options={[
                                                         { name: "AL" },
                                                         { name: "AK" },
@@ -277,8 +274,8 @@ function SignupForm(props) {
 
                                                     }}
                                                     getOptionLabel={(option) => option.name}
-                                                    style={{ width: 130 }}
-                                                    renderInput={(params) => <TextField {...params} label="State" variant="outlined" style={{ fontFamily: 'Varta, sans-serif' }}/>}
+                                                    style={{ width: 130, fontFamily: 'Varta, sans-serif' }}
+                                                    renderInput={(params) => <TextField {...params} label="State" variant="outlined" style={{ fontFamily: 'Varta, sans-serif' }} />}
                                                 />
                                             </DialogContent>
                                             <DialogActions>
@@ -299,7 +296,7 @@ function SignupForm(props) {
                                 </Button>
                             </Grid>
                             <Grid item xs={12}>
-                                <a href="/login" style={{ textDecoration: "none", color: "#2c387e" }} style={{ fontFamily: 'Varta, sans-serif' }}>Or Login</a>
+                                <a href="/login" style={{ textDecoration: "none", color: "#2c387e", fontFamily: 'Varta, sans-serif' }}>Or Login</a>
                             </Grid>
                         </Grid>
                     </form>

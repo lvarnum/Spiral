@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { AddAssignmentForm, AssignmentTimeline } from "../components";
-import { Grid, Typography, IconButton } from "@material-ui/core";
+import { Grid, Typography, IconButton, CircularProgress } from "@material-ui/core";
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import { useLocation } from 'react-router-dom';
 import API from "../utils/API";
@@ -83,17 +83,20 @@ function Assignments(props) {
             <Grid container spacing={2} direction="column" align="center" justify="center" alignItems="center"
                 style={{ border: "solid 2px #2c387e", marginBottom: "15px" }}>
                 <Grid item xs={5}>
+                    {courseState.course === "" &&
+                        <CircularProgress color="primary" />
+                    }
                     <Typography variant="h3" style={{ fontFamily: 'Varta, sans-serif' }}>{courseState.course}</Typography>
                 </Grid>
                 <Grid item xs={5}>
-                    <Typography variant="h5"style={{ fontFamily: 'Varta, sans-serif' }}>{props.user.session} Session</Typography>
+                    <Typography variant="h5" style={{ fontFamily: 'Varta, sans-serif' }}>{props.user.session} Session</Typography>
                 </Grid>
             </Grid>
             <Grid container spacing={2} direction="column" align="center" justify="center" alignItems="center">
                 <Grid item xs={12}>
                     <Typography variant="h5" style={{ fontFamily: 'Varta, sans-serif' }}>{moment().format('dddd, MMMM Do YYYY')}</Typography>
                 </Grid>
-                <Grid item xs={5}>
+                <Grid item xs={12}>
                     <IconButton component={Link} to={"/calendar"}>
                         <CalendarTodayIcon style={{ fontSize: "50px" }} color="primary" /></IconButton>
                     <AddAssignmentForm

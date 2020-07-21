@@ -10,7 +10,7 @@ function LoginForm(props) {
                 <Container maxWidth="sm">
                     <form>
                         <Grid container spacing={3} direction="column" align="center" justify="center" alignItems="center">
-                            <Grid item xs={12} style={{ backgroundColor: "#2c387e", color: "white", width: "100%" }}>
+                            <Grid item xs={12} style={{ backgroundColor: "#2c387e", color: "white", width: "100%", marginBottom: "15px" }}>
                                 <Typography variant="h4" gutterBottom style={{ fontFamily: 'Varta, sans-serif' }}>
                                     Login
                                 </Typography>

@@ -69,8 +69,8 @@ function AddClassForm(props) {
                     <DialogContent>
                         <form onSubmit={handleFormSubmit}>
                             <Grid container spacing={3}>
-                                <Grid item xs={12} style={{ backgroundColor: "#2c387e", color: "white", width: "100%", marginBottom:"10px", textAlign: "center" }}>
-                                    <Typography variant="h4" gutterBottom>
+                                <Grid item xs={12} style={{ backgroundColor: "#2c387e", color: "white", width: "100%", marginBottom: "15px", textAlign: "center" }}>
+                                    <Typography variant="h4" gutterBottom style={{ fontFamily: 'Varta, sans-serif' }}>
                                         Add Class
                                 </Typography>
                                 </Grid>
@@ -151,7 +151,7 @@ function AddClassForm(props) {
                                         style={{ width: 150 }}
                                         freeSolo
                                         renderInput={(params) => (
-                                            <TextField {...params} label="Class Prefix" variant="outlined" style={{ fontFamily: 'Varta, sans-serif' }}/>
+                                            <TextField {...params} label="Class Prefix" variant="outlined" style={{ fontFamily: 'Varta, sans-serif' }} />
                                         )}
                                     />
                                 </Grid>
@@ -220,7 +220,7 @@ function AddClassForm(props) {
                                         style={{ width: 150 }}
                                         freeSolo
                                         renderInput={(params) => (
-                                            <TextField {...params} label="Class Number" variant="outlined" style={{ fontFamily: 'Varta, sans-serif' }}/>
+                                            <TextField {...params} label="Class Number" variant="outlined" style={{ fontFamily: 'Varta, sans-serif' }} />
                                         )}
                                     />
                                 </Grid>
@@ -334,8 +334,7 @@ function AddClassForm(props) {
                                         onChange={handleInputChange}
                                         as="input"
                                         type="text"
-                                        style={{ width: 200 }}
-                                        style={{ fontFamily: 'Varta, sans-serif' }}
+                                        style={{ width: 200, fontFamily: 'Varta, sans-serif' }}
                                     />
                                 </Grid>
                                 <Grid item xs={12}>
@@ -346,8 +345,7 @@ function AddClassForm(props) {
                                         onChange={handleInputChange}
                                         as="input"
                                         type="text"
-                                        style={{ width: 100 }}
-                                        style={{ fontFamily: 'Varta, sans-serif' }}
+                                        style={{ width: 100, fontFamily: 'Varta, sans-serif' }}
                                     />
                                 </Grid>
                                 <Grid item xs={12}>
