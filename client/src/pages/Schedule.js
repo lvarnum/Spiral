@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { AddClassForm, ScheduleTimeline } from "../components";
-import { Grid, Typography, IconButton } from "@material-ui/core";
+import { Grid, Typography, IconButton, CircularProgress } from "@material-ui/core";
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import API from "../utils/API";
 import moment from "moment";
@@ -62,6 +62,9 @@ function Schedule(props) {
                     <Typography variant="h3" style={{ fontFamily: 'Varta, sans-serif' }}>{props.user.firstName}'s Schedule</Typography>
                 </Grid >
                 <Grid item xs={12}>
+                    {universityState.university === "" &&
+                        <CircularProgress color="primary" />
+                    }
                     <Typography variant="h4" style={{ fontFamily: 'Varta, sans-serif' }}>{universityState.university.name}</Typography>
                 </Grid>
                 <Grid item xs={12}>

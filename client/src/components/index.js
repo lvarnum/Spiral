@@ -11,3 +11,4 @@ export { default as AssignmentTimeline } from "./AssignmentTimeline";
 export { default as UserInfo } from "./UserInfo";
 export { default as CalendarComponent } from "./CalendarComponent";
 export { default as PostRow } from "./PostRow";
+export { default as About } from "./About";

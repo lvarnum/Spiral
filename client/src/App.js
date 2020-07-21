@@ -8,8 +8,7 @@ import {
 import { Home, Schedule, BulletinBoard, Calendar, Assignments, Profile } from "./pages";
 import Auth from "./pages/Auth"
 import { Navigation, Error } from "./components";
-import Container from '@material-ui/core/Container';
-import Grid from '@material-ui/core/Grid';
+import { Container, Grid } from '@material-ui/core';
 import API from './utils/API';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 
@@ -26,6 +25,8 @@ function App() {
     API.Auth.login(data).then(res => {
       setUser(res.data)
 
+    }).catch(err => {
+      setError("Email or Password Incorrect")
     })
   }
 
@@ -54,14 +55,14 @@ function App() {
     API.Auth.signup(data).then(res => {
       setUser(res.data)
     }).catch(err => {
-      setError("Email already taken")
+      setError("Email Already Taken")
     })
   }
 
   function logoutUser() {
     API.Auth.logout().then(res => {
       setUser({});
-    })
+    });
   }
 
   function clearError() {

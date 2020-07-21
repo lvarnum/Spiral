@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Grid, Typography, Paper, Tabs, Tab } from '@material-ui/core';
+import { Grid, Typography, Paper, Tabs, Tab, CircularProgress } from '@material-ui/core';
 import API from "../utils/API";
 import { PostTable, PostForm } from "../components";
 import moment from "moment";
@@ -94,7 +94,10 @@ function BulletinBoard(props) {
                     <Typography variant="h3" style={{ fontFamily: 'Varta, sans-serif' }}>Community Bulletin</Typography>
                 </Grid >
                 <Grid item xs={12}>
-                    <Typography variant="h4">{universityState.university}</Typography>
+                    {universityState.university === "" &&
+                        <CircularProgress color="primary" />
+                    }
+                    <Typography variant="h4" style={{ fontFamily: 'Varta, sans-serif' }}>{universityState.university}</Typography>
                 </Grid>
             </Grid>
             <Grid container spacing={2} direction="column" align="center" justify="center" alignItems="center">
@@ -111,13 +114,12 @@ function BulletinBoard(props) {
                 <Grid item xs={12}>
                     <Paper>
                         <Tabs
-                        style={{marginBottom: "15px"}}
+                            style={{ marginBottom: "15px", fontFamily: 'Varta, sans-serif' }}
                             value={value}
                             onChange={handleChange}
                             indicatorColor="primary"
                             textColor="primary"
                             variant="fullWidth"
-                            style={{ fontFamily: 'Varta, sans-serif' }}
                         >
                             <Tab label="All" style={{ fontFamily: 'Varta, sans-serif' }} onClick={loadPosts} />
                             <Tab label="Academic" style={{ fontFamily: 'Varta, sans-serif' }} onClick={loadFiltered.bind(this, "academic")} />

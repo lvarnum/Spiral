@@ -39,6 +39,7 @@ function Profile(props) {
         API.User.update(props.user.id,
             { session: formObject.session })
             .then(res => {
+                props.user.session = formObject.session;
                 setFormObject(initialFormState);
                 loadInfo();
             });

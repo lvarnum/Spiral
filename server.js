@@ -16,7 +16,8 @@ const PORT = process.env.PORT || 3001;
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://spiral:project3@ds037617.mlab.com:37617/heroku_91kkhqlh", {
   useNewUrlParser: true,
-  useFindAndModify: false
+  useFindAndModify: false,
+  useUnifiedTopology: true
 });
 
 // Bringing in Morgan, a nice logger for our server

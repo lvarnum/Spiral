@@ -8,13 +8,17 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 function Navigation(props) {
   const { user } = props;
-
-  const [value, setValue] = useState(0);
   const { logoutUser } = props;
 
+  const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
-    setValue(newValue);
+    if (newValue === 3) {
+      setValue(0);
+    }
+    else {
+      setValue(newValue);
+    }
   };
 
   return (
@@ -29,12 +33,12 @@ function Navigation(props) {
             indicatorColor="secondary"
             textColor="secondary"
             aria-label="navbar"
-            
+
           >
             <Tab component={Link} to="/schedule" icon={<HomeIcon />} />
             <Tab component={Link} to="/bulletinboard" icon={<ForumIcon />} />
             <Tab component={Link} to="/profile" icon={<PersonPinIcon />} />
-            <Tab component={Link} to="/home" onClick={logoutUser} icon={<ExitToAppIcon />} />
+            <Tab component={Link} to="/home" onClick={handleChange && logoutUser} icon={<ExitToAppIcon />} />
 
           </Tabs>
         </Paper>
