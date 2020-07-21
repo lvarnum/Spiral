@@ -20,7 +20,7 @@ function Home() {
 
     return (
         <>
-            <Paper style={{ padding: "30px", border: "solid 2px #2c387e", marginTop: "80px", marginBottom: "50px" }}>
+            <Paper style={{ padding: "30px", border: "solid 2px #2c387e", marginBottom: "50px" }}>
                 <Container maxWidth="sm">
                     <Grid container spacing={3} direction="column" align="center" justify="center" alignItems="center">
                         <Grid item xs={12}>

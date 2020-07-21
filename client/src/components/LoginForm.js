@@ -6,7 +6,7 @@ function LoginForm(props) {
 
     return (
         <>
-            <Paper style={{ padding: "30px", border: "solid 2px #2c387e", marginTop: "120px" }}>
+            <Paper style={{ padding: "30px", border: "solid 2px #2c387e" }}>
                 <Container maxWidth="sm">
                     <form>
                         <Grid container spacing={3} direction="column" align="center" justify="center" alignItems="center">
