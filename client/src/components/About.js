@@ -60,28 +60,28 @@ function About() {
                     <Typography variant="body1" align="center" gutterBottom style={{ fontFamily: 'Varta, sans-serif' }}>
                         Laynah Varnum:
                         </Typography>
-                    <a href="https://github.com/lvarnum" style={{ color: "#ffc400", marginLeft: "5px" }}>
+                    <a href="https://github.com/lvarnum" target="_b" style={{ color: "#ffc400", marginLeft: "5px" }}>
                         https://github.com/lvarnum</a>
                 </Grid>
                 <Grid item xs={12} style={{ borderBottom: "solid 2px white" }}>
                     <Typography variant="body1" align="center" gutterBottom style={{ fontFamily: 'Varta, sans-serif' }}>
                         Joanna Pino:
                         </Typography>
-                    <a href="https://github.com/jpino7" style={{ color: "#ffc400", marginLeft: "5px" }}>
+                    <a href="https://github.com/jpino7" target="_b" style={{ color: "#ffc400", marginLeft: "5px" }}>
                         https://github.com/jpino7</a>
                 </Grid>
                 <Grid item xs={12} style={{ borderBottom: "solid 2px white" }}>
                     <Typography variant="body1" align="center" gutterBottom style={{ fontFamily: 'Varta, sans-serif' }}>
                         Veronica Torres:
                         </Typography>
-                    <a href="https://github.com/Drapeto" style={{ color: "#ffc400", marginLeft: "5px" }}>
+                    <a href="https://github.com/Drapeto" target="_b" style={{ color: "#ffc400", marginLeft: "5px" }}>
                         https://github.com/Drapeto</a>
                 </Grid>
                 <Grid item xs={12}>
                     <Typography variant="body1" align="center" gutterBottom style={{ fontFamily: 'Varta, sans-serif' }}>
                         Jeremy Nelson:
                         </Typography>
-                    <a href="https://github.com/Swif242" style={{ color: "#ffc400", marginLeft: "5px" }}>
+                    <a href="https://github.com/Swif242" target="_b" style={{ color: "#ffc400", marginLeft: "5px" }}>
                         https://github.com/Swif242</a>
                 </Grid>
             </Grid>
