@@ -50,7 +50,7 @@ function About() {
                             Engage with Your Academic Community
                         </Typography>
                         <Typography variant="body1" align="center" gutterBottom style={{ fontFamily: 'Varta, sans-serif' }}>
-                            View and make posts about study groups, events and clubs happeining at your own University.
+                            View and make posts about study groups, events and clubs happening at your own University.
                         </Typography>
                     </Grid>
                     <Grid item xs={12}>
