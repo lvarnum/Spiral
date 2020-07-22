@@ -27,6 +27,9 @@ function About() {
                         <Typography variant="h4" align="center" gutterBottom style={{ fontFamily: 'Varta, sans-serif' }}>
                             Manage Your Class Schedule
                         </Typography>
+                        <Typography variant="body1" align="center" gutterBottom style={{ fontFamily: 'Varta, sans-serif' }}>
+                            Add classes to your homepage and view your schedule as an easy to follow timeline.
+                        </Typography>
                     </Grid>
                     <Grid item xs={12}>
                         <img src={Schedule} alt="Schedule" style={{ width: "100%" }} />
@@ -35,6 +38,9 @@ function About() {
                         <Typography variant="h4" align="center" gutterBottom style={{ fontFamily: 'Varta, sans-serif' }}>
                             Keep Track of Your Assignments
                         </Typography>
+                        <Typography variant="body1" align="center" gutterBottom style={{ fontFamily: 'Varta, sans-serif' }}>
+                            Add assignments to any class on your schedule and keep track of both finished and unfinished work.
+                        </Typography>
                     </Grid>
                     <Grid item xs={12}>
                         <img src={Assignments} alt="Assignments" style={{ width: "100%" }} />
@@ -42,6 +48,9 @@ function About() {
                     <Grid item xs={12} style={{ borderBottom: "solid 2px #2c387e", borderTop: "solid 2px #2c387e" }}>
                         <Typography variant="h4" align="center" gutterBottom style={{ fontFamily: 'Varta, sans-serif' }}>
                             Engage with Your Academic Community
+                        </Typography>
+                        <Typography variant="body1" align="center" gutterBottom style={{ fontFamily: 'Varta, sans-serif' }}>
+                            View and make posts about study groups, events and clubs happeining at your own University.
                         </Typography>
                     </Grid>
                     <Grid item xs={12}>
